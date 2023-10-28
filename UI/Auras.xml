@@ -1,0 +1,227 @@
+<UI xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
+    <Frame name="AlleriaAurasFrame" hidden="true" movable="true" parent="UIParent">
+        <Size x="240" y="480"/>
+        <Anchors>
+            <Anchor point="RIGHT" x="-40" y="0"/>
+        </Anchors>
+        <Layers>
+            <Layer level="BACKGROUND">
+                <Texture atlas="auctionhouse-background-buy-commodities-market">
+                </Texture>
+            </Layer>
+            <Layer level="OVERLAY">
+                <FontString inherits="SystemFont_Outline" text="Категории аур">
+                    <Anchors>
+                        <Anchor point="TOP" y="-20"/>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+        <Scripts>
+            <OnLoad>
+                MakeMovable(self);
+            </OnLoad>
+        </Scripts>
+
+        <Frames>
+            <Button inherits="SharedButtonTemplate" text="Снять все ауры">
+                <Size x="220" y="30"/>
+                <Anchors>
+                    <Anchor point="TOP" x="0" y="-40"/>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        SendCoreMessage("rps unaura all");
+                    </OnClick>
+                </Scripts>
+            </Button>
+            <!-- Scrolling -->
+            <ScrollFrame name="$parentScroll" inherits="FauxScrollFrameTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" y="-75" />
+                    <Anchor point="BOTTOMRIGHT" x="-35" y="54" />
+                </Anchors>
+                <Scripts>
+                    <OnVerticalScroll>
+                        FauxScrollFrame_OnVerticalScroll(self, offset, 32, Alleria.Modules.Auras.ScrollCategoryList); 
+                    </OnVerticalScroll>
+                    <OnShow>
+                        Alleria.Modules.Auras.ScrollCategoryList();
+                    </OnShow>
+                </Scripts>
+            </ScrollFrame>
+            <!-- Emotes Buttons -->
+            <Button name="AlleriaAurasCategoryButton1" inherits="AlleriaAuraButton" text="Эмоция 1">
+                <Anchors>
+                    <Anchor point="TOPLEFT" x="10" y="-70" />
+                </Anchors>
+            </Button>
+
+            <Button name="AlleriaAurasCategoryButton2" inherits="AlleriaAuraButton" text="Эмоция 2">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="AlleriaAurasCategoryButton1" relativePoint="BOTTOMLEFT" x="0" y="0" />
+                </Anchors>
+            </Button>
+
+            <Button name="AlleriaAurasCategoryButton3" inherits="AlleriaAuraButton" text="Эмоция 3">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="AlleriaAurasCategoryButton2" relativePoint="BOTTOMLEFT" x="0" y="0" />
+                </Anchors>
+            </Button>
+
+            <Button name="AlleriaAurasCategoryButton4" inherits="AlleriaAuraButton" text="Эмоция 4">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="AlleriaAurasCategoryButton3" relativePoint="BOTTOMLEFT" x="0" y="0" />
+                </Anchors>
+            </Button>
+
+            <Button name="AlleriaAurasCategoryButton5" inherits="AlleriaAuraButton" text="Эмоция 5">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="AlleriaAurasCategoryButton4" relativePoint="BOTTOMLEFT" x="0" y="0" />
+                </Anchors>
+            </Button>
+
+            <Button name="AlleriaAurasCategoryButton6" inherits="AlleriaAuraButton" text="Эмоция 6">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="AlleriaAurasCategoryButton5" relativePoint="BOTTOMLEFT" x="0" y="0" />
+                </Anchors>
+            </Button>
+
+            <Button name="AlleriaAurasCategoryButton7" inherits="AlleriaAuraButton" text="Эмоция 7">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="AlleriaAurasCategoryButton6" relativePoint="BOTTOMLEFT" x="0" y="0" />
+                </Anchors>
+            </Button>
+            <Button name="AlleriaAurasCategoryButton8" inherits="AlleriaAuraButton" text="Эмоция 8">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="AlleriaAurasCategoryButton7" relativePoint="BOTTOMLEFT" x="0" y="0" />
+                </Anchors>
+            </Button>
+            <Button name="AlleriaAurasCategoryButton9" inherits="AlleriaAuraButton" text="Эмоция 9">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="AlleriaAurasCategoryButton8" relativePoint="BOTTOMLEFT" x="0" y="0" />
+                </Anchors>
+            </Button>
+            <!-- Close -->
+            <Button inherits="SharedButtonTemplate" text="Закрыть">
+                <Size x="220" y="40"/>
+                <Anchors>
+                    <Anchor point="BOTTOM" x="0" y="10"/>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        AlleriaAurasFrame:Hide();
+                    </OnClick>
+                </Scripts>
+            </Button>
+
+            
+
+            <Frame name="AlleriaAurasSubFrame" hidden="true" movable="false" parent="AlleriaAurasFrame">
+                <Size x="240" y="480"/>
+                <Anchors>
+                    <Anchor x="-250" relativeTo="$parent" relativePoint="TOPLEFT"/>
+                </Anchors>
+                <Layers>
+                    <Layer level="BACKGROUND">
+                        <Texture atlas="auctionhouse-background-buy-commodities-market">
+                        </Texture>
+                    </Layer>
+                    <Layer level="OVERLAY">
+                        <FontString inherits="SystemFont_Outline" text="Список аур">
+                            <Anchors>
+                                <Anchor point="TOP" y="-20"/>
+                            </Anchors>
+                        </FontString>
+                    </Layer>
+                </Layers>
+                <Scripts>
+                    <OnLoad>
+                    </OnLoad>
+                </Scripts>
+
+                <Frames>
+                    <!-- Scrolling -->
+                    <ScrollFrame name="$parentScroll" inherits="FauxScrollFrameTemplate">
+                        <Anchors>
+                            <Anchor point="TOPLEFT" y="-75" />
+                            <Anchor point="BOTTOMRIGHT" x="-35" y="54" />
+                        </Anchors>
+                        <Scripts>
+                            <OnVerticalScroll>
+                                FauxScrollFrame_OnVerticalScroll(self, offset, 32, Alleria.Modules.Auras.ScrollAuras); 
+                            </OnVerticalScroll>
+                            <OnShow>
+                                Alleria.Modules.Auras.ScrollAuras();
+                            </OnShow>
+                        </Scripts>
+                    </ScrollFrame>
+                    <!-- Emotes Buttons -->
+                    <Button name="AlleriaAuraButton1" inherits="AlleriaAuraButton" text="Эмоция 1">
+                        <Anchors>
+                            <Anchor point="TOPLEFT" x="10" y="-70" />
+                        </Anchors>
+                    </Button>
+
+                    <Button name="AlleriaAuraButton2" inherits="AlleriaAuraButton" text="Эмоция 2">
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativeTo="AlleriaAuraButton1" relativePoint="BOTTOMLEFT" x="0" y="0" />
+                        </Anchors>
+                    </Button>
+
+                    <Button name="AlleriaAuraButton3" inherits="AlleriaAuraButton" text="Эмоция 3">
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativeTo="AlleriaAuraButton2" relativePoint="BOTTOMLEFT" x="0" y="0" />
+                        </Anchors>
+                    </Button>
+
+                    <Button name="AlleriaAuraButton4" inherits="AlleriaAuraButton" text="Эмоция 4">
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativeTo="AlleriaAuraButton3" relativePoint="BOTTOMLEFT" x="0" y="0" />
+                        </Anchors>
+                    </Button>
+
+                    <Button name="AlleriaAuraButton5" inherits="AlleriaAuraButton" text="Эмоция 5">
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativeTo="AlleriaAuraButton4" relativePoint="BOTTOMLEFT" x="0" y="0" />
+                        </Anchors>
+                    </Button>
+
+                    <Button name="AlleriaAuraButton6" inherits="AlleriaAuraButton" text="Эмоция 6">
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativeTo="AlleriaAuraButton5" relativePoint="BOTTOMLEFT" x="0" y="0" />
+                        </Anchors>
+                    </Button>
+
+                    <Button name="AlleriaAuraButton7" inherits="AlleriaAuraButton" text="Эмоция 7">
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativeTo="AlleriaAuraButton6" relativePoint="BOTTOMLEFT" x="0" y="0" />
+                        </Anchors>
+                    </Button>
+                    <Button name="AlleriaAuraButton8" inherits="AlleriaAuraButton" text="Эмоция 8">
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativeTo="AlleriaAuraButton7" relativePoint="BOTTOMLEFT" x="0" y="0" />
+                        </Anchors>
+                    </Button>
+                    <Button name="AlleriaAuraButton9" inherits="AlleriaAuraButton" text="Эмоция 9">
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativeTo="AlleriaAuraButton8" relativePoint="BOTTOMLEFT" x="0" y="0" />
+                        </Anchors>
+                    </Button>
+                    <!-- Close -->
+                    <Button inherits="SharedButtonTemplate" text="Закрыть">
+                        <Size x="220" y="40"/>
+                        <Anchors>
+                            <Anchor point="BOTTOM" x="0" y="10"/>
+                        </Anchors>
+                        <Scripts>
+                            <OnClick>
+                                AlleriaAurasSubFrame:Hide();
+                            </OnClick>
+                        </Scripts>
+                    </Button>
+                </Frames>
+            </Frame>
+        </Frames>
+    </Frame>
+</UI>

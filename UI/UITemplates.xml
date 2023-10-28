@@ -1,0 +1,357 @@
+<UI xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
+    <!--
+        Fonts:
+            
+            SystemFont_Huge1 - 20 px without outline
+            Game18Font - 18px px without outline
+            Game16Font - 16px px without outline
+            Game15Font - 15px px without outline
+            Game12Font - 12px px without outline
+            Game11Font_Shadow
+            SystemFont_InverseShadow_Small - 10 px without outline
+            
+            SystemFont_Huge1_Outline - 20 px outline: normal
+            SystemFont_Outline - 13px px with outline: normal
+            SystemFont_Outline_Small - 10 px
+
+            NumberFont_GameNormal - Nicely/Beaty font support russian (10px)
+
+            NumberFont_OutlineThick_Mono_Small - Mono font (12px)
+
+        Layers:
+            BACKGROUND - Level 0. Place the background of your frame here.
+            BORDER - Level 1. Place the border artwork of your frame here.
+            ARTWORK - Level 2. Place the artwork of your frame here.
+            OVERLAY - Level 3. Place your text, objects, and buttons in this level.
+            HIGHLIGHT - Level 4. Place your text, objects, and buttons in this level when object hovered.
+    -->
+    <Button name="ButtonTopLeftClose" virtual="true">
+        <Size x="30" y="30" />
+        <NormalTexture atlas="128-redbutton-exit">
+        </NormalTexture>
+        <HighlightTexture atlas="128-redbutton-exit-highlight">
+        </HighlightTexture>
+        <PushedTexture atlas="128-redbutton-exit-pressed">
+        </PushedTexture>
+    </Button>
+    <EditBox etters="48" name="AlleriaEditBoxTemplate" autoFocus="false" virtual="true">
+        <Size x="160" y="40"/>
+        <Layers>
+            <Layer level="BACKGROUND">
+                <Texture parentKey="Left" file="Interface\Common\Common-Input-Border">
+                    <Size x="8" y="20"/>
+                    <Anchors>
+                        <Anchor point="LEFT" x="-5" y="0"/>
+                    </Anchors>
+                    <TexCoords left="0" right="0.0625" top="0" bottom="0.625"/>
+                </Texture>
+                <Texture parentKey="Right" file="Interface\Common\Common-Input-Border">
+                    <Size x="8" y="20"/>
+                    <Anchors>
+                        <Anchor point="RIGHT" x="0" y="0"/>
+                    </Anchors>
+                    <TexCoords left="0.9375" right="1.0" top="0" bottom="0.625"/>
+                </Texture>
+                <Texture parentKey="Middle" file="Interface\Common\Common-Input-Border">
+                    <Size x="10" y="20"/>
+                    <Anchors>
+                        <Anchor point="LEFT" relativeKey="$parent.Left" relativePoint="RIGHT"/>
+                        <Anchor point="RIGHT" relativeKey="$parent.Right" relativePoint="LEFT"/>
+                    </Anchors>
+                    <TexCoords left="0.0625" right="0.9375" top="0" bottom="0.625"/>
+                </Texture>
+            </Layer>
+        </Layers>
+        <FontString inherits="GameFontNormal"/>
+    </EditBox>
+
+    <Frame name="CharacterStat" virtual="true">
+        <Size x="280" y="50" />
+        <Layers>
+            <Layer level="BACKGROUND">
+                <Texture atlas="auctionhouse-background-buy-noncommodities-header">
+                </Texture>
+            </Layer>
+            <Layer level="OVERLAY">
+                <Texture name="$parentIcon">
+                    <Size x="40" y="40" />
+                    <Anchors>
+                        <Anchor point="TOPLEFT" y="-5" x="5" />
+                    </Anchors>
+                </Texture>
+                <FontString name="$parentName" text="STAT_NAME" inherits="SystemFont_Outline">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" y="-12" x="50" />
+                    </Anchors>
+                </FontString>
+
+                <FontString name="$parentValue" text="0" inherits="SystemFont_Outline" justifyH="center" justifyV="center">
+                    <Size x="50" y="20" />
+                    <Anchors>
+                        <Anchor point="TOPLEFT" y="-25" x="60" />
+                    </Anchors>
+                </FontString>
+
+                <FontString name="$parentDiff" text="0" inherits="SystemFont_Outline">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" y="-28" x="130" />
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+        <Frames>
+            <Frame name="$parentDescription">
+                <Size x="40" y="40" />
+                <Anchors>
+                    <Anchor point="TOPLEFT" y="-5" x="5" />
+                </Anchors>
+                <Scripts>
+                    <OnEnter>
+                        GameTooltip:SetOwner(self, "ANCHOR_CURSOR");
+                        GameTooltip:AddLine(self.Name);
+                        GameTooltip:AddLine(self.Description);
+                        GameTooltip:Show();
+                    </OnEnter>
+                    <OnLeave>
+                        GameTooltip:Hide();
+                    </OnLeave>
+                </Scripts>
+            </Frame>
+            <Button name="$parentBtnMinus">
+                <Size x="20" y="20"/>
+                <Anchors>
+                    <Anchor point="TOPLEFT" x="50" y="-25"/>
+                </Anchors>
+                <NormalTexture atlas="common-button-dropdown-open">
+                </NormalTexture>
+                <HighlightTexture atlas="128-redbutton-exit-highlight">
+                </HighlightTexture>
+                <PushedTexture atlas="common-button-dropdown-openpressed">
+                </PushedTexture>
+                <Scripts>
+                    <OnEnter>
+                        GameTooltip:SetOwner(self, "ANCHOR_CURSOR");
+                        GameTooltip:AddLine("|cFFFF8040ЛКМ|r: Изменить на -1");
+                        GameTooltip:AddLine("|cFFFF8040ЛКМ+SHIFT|r: Изменить на -5");
+                        GameTooltip:AddLine("|cFFFF8040ЛКМ+CTRL|r: Изменить на -10");
+                        GameTooltip:Show();
+                    </OnEnter>
+                    <OnLeave>
+                        GameTooltip:Hide();
+                    </OnLeave>
+                </Scripts>
+            </Button>
+
+            <Button name="$parentBtnPlus">
+                <Size x="20" y="20"/>
+                <Anchors>
+                    <Anchor point="TOPLEFT" x="100" y="-25"/>
+                </Anchors>
+                <NormalTexture atlas="common-button-dropdown-closed">
+                </NormalTexture>
+                <HighlightTexture atlas="128-redbutton-exit-highlight">
+                </HighlightTexture>
+                <PushedTexture atlas="common-button-dropdown-closedpressed">
+                </PushedTexture>
+                <Scripts>
+                    <OnEnter>
+                        GameTooltip:SetOwner(self, "ANCHOR_CURSOR");
+                        GameTooltip:AddLine("|cFFFF8040ЛКМ|r: Изменить на +1");
+                        GameTooltip:AddLine("|cFFFF8040ЛКМ+SHIFT|r: Изменить на +5");
+                        GameTooltip:AddLine("|cFFFF8040ЛКМ+CTRL|r: Изменить на +10");
+                        GameTooltip:Show();
+                    </OnEnter>
+                    <OnLeave>
+                        GameTooltip:Hide();
+                    </OnLeave>
+                </Scripts>
+            </Button>
+        </Frames>
+    </Frame>
+
+    <Frame name="DisplayRow" virtual="true">
+        <Size x="150" y="30" />
+        <Layers>
+            <Layer level="OVERLAY">
+                <FontString inherits="SystemFont_Outline" name="$parentTitle">
+                    <Anchors>
+                        <Anchor point="LEFT" x="0" y="0"/>
+                    </Anchors>
+                </FontString>
+            </Layer>
+            <Layer level="HIGHLIGHT">
+                
+            </Layer>
+        </Layers>
+        <Frames>
+            <EditBox name="$parentValue" inherits="AlleriaEditBoxTemplate">
+                <Size x="90" y="40"/>
+                <Anchors>
+                    <Anchor point="LEFT" x="90" y="0"/>
+                </Anchors>
+            </EditBox>
+             <EditBox name="$parentAppearance" inherits="AlleriaEditBoxTemplate">
+                <Size x="70" y="40"/>
+                <Anchors>
+                    <Anchor point="LEFT" x="190" y="0"/>
+                </Anchors>
+            </EditBox>
+        </Frames>
+    </Frame>
+
+    <Button name="AlleriaEmotesButton" virtual="true" registerForClicks="LeftButtonUp,RightButtonUp">
+        <Size x="200" y="40" />
+        <!--<Layers>
+            <Layer level="background">
+                <Texture atlas="GarrMission_FollowerPartyBox_Lg">
+                </Texture>
+            </Layer>
+            <Layer level="highlight">
+                <Texture atlas="GarrMission_LevelUpBanner">
+                </Texture>
+            </Layer>
+        </Layers>-->
+        <NormalTexture atlas="GarrMission_FollowerPartyBox_Lg">
+        </NormalTexture>
+        <HighlightTexture atlas="GarrMission_TabGlow" alphaMode="ADD">
+        </HighlightTexture>
+        <PushedTexture atlas="GarrMission_ChestOpenTextGlow" alphaMode="ADD">
+        </PushedTexture>
+        <ButtonText parentKey="Text" inherits="SystemFont_Outline" >
+            <Anchors>
+                <Anchor point="LEFT" y="-1.4" x="40" />
+            </Anchors>
+		</ButtonText>
+        <Frames>
+            <Button name="$parentIsFavorite">
+                <Size x="16" y="16" />
+                <Anchors>
+                    <Anchor point="LEFT" x="20" />
+                </Anchors>
+                <Layers>
+                    <Layer level="overlay" name="$parent">
+                        <Texture atlas="auctionhouse-icon-favorite" hidden="true" name="$parentTexture">
+                            <Scripts>
+                            </Scripts>
+                        </Texture>
+                    </Layer>
+                </Layers>
+                <NormalTexture atlas="auctionhouse-icon-favorite-off">
+                </NormalTexture>
+                <HighlightTexture atlas="auctionhouse-icon-favorite">
+                </HighlightTexture>
+                <Scripts>
+                    <OnLoad>
+                        self.LocalID = 0;
+                    </OnLoad>
+                    <OnEnter>
+                        GameTooltip:SetOwner(self, "ANCHOR_CURSOR");
+                        GameTooltip:AddLine("|cFF00FFBBИзбранное|r");
+                        GameTooltip:AddLine("|cFF00FFBBЛКМ:|r Добавить/удалить из избранного.|r");
+                        GameTooltip:Show();
+                    </OnEnter>
+                    <OnClick>
+                        Alleria.Modules.Emotes:ToggleFavorite(self:GetName(), self.LocalID);
+                    </OnClick>
+                    <OnLeave>
+                        GameTooltip:Hide();
+                    </OnLeave>
+                </Scripts>
+            </Button>
+        </Frames>
+        <Scripts>
+            <OnLoad>
+                self.EmoteNum = 0;
+                self.EmoteId = 0;
+                self.EmoteDescription = "";
+
+                self:SetScript(
+                    "OnClick", function (self, button, down)
+                        if(button == "RightButton") then
+                            if(AlleriaEmotesFramePreview:IsVisible() == false) then
+                                AlleriaEmotesFramePreview:Show();
+                                EmotePreviewModel.AnimationID = self.EmoteNum;
+                            end;
+                            if(EmotePreviewModel.AnimationID >= 0) then
+                                EmotePreviewModel:SetAnimation(self.EmoteNum);
+                            end;
+                        end;
+                        if(button == "LeftButton") then
+                            SendCoreMessage("mod standstate " .. self.EmoteId);
+                        end;
+                    end
+                );
+            </OnLoad>
+            <OnEnter>
+                GameTooltip:SetOwner(self, "ANCHOR_CURSOR");
+                GameTooltip:AddLine("|cFF00FFBBОписание:|r");
+                GameTooltip:AddLine(self.EmoteDescription);
+
+                GameTooltip:AddLine("|cFF00FFBBДействия:|r");
+                GameTooltip:AddLine("|cFF00FFBBЛевый клик:|r Применить|r");
+                GameTooltip:AddLine("|cFF00FFBBПравый клик:|r Предпросмотр|r");
+                GameTooltip:Show();
+            </OnEnter>
+            <OnLeave>
+                if(AlleriaEmotesFramePreview:IsVisible() == true) then
+                    EmotePreviewModel.AnimationID = 0;
+                    AlleriaEmotesFramePreview:Hide();
+                    EmotePreviewModel:SetAnimation(0);
+                end;
+                GameTooltip:Hide();
+            </OnLeave>
+        </Scripts>
+    </Button>
+
+    <Button name="AlleriaAuraButton" virtual="true" registerForClicks="LeftButtonUp,RightButtonUp">
+        <Size x="200" y="40" />
+        <!--<Layers>
+            <Layer level="background">
+                <Texture atlas="GarrMission_FollowerPartyBox_Lg">
+                </Texture>
+            </Layer>
+            <Layer level="highlight">
+                <Texture atlas="GarrMission_LevelUpBanner">
+                </Texture>
+            </Layer>
+        </Layers>-->
+        <NormalTexture atlas="GarrMission_FollowerPartyBox_Lg">
+        </NormalTexture>
+        <HighlightTexture atlas="GarrMission_TabGlow" alphaMode="ADD">
+        </HighlightTexture>
+        <PushedTexture atlas="GarrMission_ChestOpenTextGlow" alphaMode="ADD">
+        </PushedTexture>
+        <ButtonText parentKey="Text" inherits="SystemFont_Outline" >
+            <Anchors>
+                <Anchor point="LEFT" y="-1.4" x="40" />
+            </Anchors>
+		</ButtonText>
+        <Frames>
+        </Frames>
+        <Scripts>
+            <OnLoad>
+                self.AuraID = 0;
+
+                self:SetScript(
+                    "OnClick", function (self, button, down)
+                        if(button == "LeftButton") then
+                            if(self.AuraID > 0) then
+                                SendCoreMessage("rps aura " .. self.AuraID);
+                            end;
+                        end;
+                    end
+                );
+            </OnLoad>
+            <OnEnter>
+                --GameTooltip:SetOwner(self, "ANCHOR_CURSOR");
+                --GameTooltip:AddLine("|cFF00FFBBДействия:|r");
+                --GameTooltip:AddLine("|cFF00FFBBЛевый клик:|r Применить|r");
+                --GameTooltip:Show();
+            </OnEnter>
+            <OnLeave>
+                --GameTooltip:Hide();
+            </OnLeave>
+        </Scripts>
+    </Button>
+
+</UI>

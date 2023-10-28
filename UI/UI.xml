@@ -1,0 +1,394 @@
+<UI xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
+    <Frame name="AlleriaOptionsFrame" parent="UIParent" hidden="true" movable="true" clampedToScreen="true">
+        <Size x="300" y="300" />
+        <Anchors>
+            <Anchor point="CENTER" x="0" y="0"/>
+        </Anchors>
+        <Layers>
+            <Layer level="BACKGROUND">
+                <Texture atlas="ChallengeMode-RuneBG">
+                </Texture>
+            </Layer>
+            <Layer level="OVERLAY">
+
+                <FontString inherits="SystemFont_InverseShadow_Small"  text="" parent="AlleriaCharacterOptionsFrame" name="$parentSelected">
+                    <FontHeight val="16"/>
+                    <Anchors>
+                        <Anchor point="CENTER" x="0" y="0"/>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+
+        <Frames>
+            <Button>
+                <Size x="90" y="90" />
+                <Anchors>
+                    <Anchor point="CENTER" x="-100" y="40"/>
+                </Anchors>
+                <Layers>
+                    <Layer level="background">
+                        <Texture atlas="charactercreate-ring-customizebackground">
+                        </Texture>
+                    </Layer>
+                </Layers>
+                <NormalTexture atlas="charactercreate-icon-customize-head" alphaMode="ADD">
+					<Anchors>
+						<Anchor point="TOPLEFT" x="0" y="0"/>
+						<Anchor point="BOTTOMRIGHT" x="0" y="0"/>
+					</Anchors>
+					<!--<TexCoords left="0.03125" right="0.984375" top="0.03125" bottom="0.984375"/>-->
+				</NormalTexture>
+                <HighlightTexture atlas="charactercreate-icon-customize-head-selected" alphaMode="ADD">
+					<Anchors>
+						<Anchor point="TOPLEFT" x="0" y="0"/>
+						<Anchor point="BOTTOMRIGHT" x="0" y="0"/>
+					</Anchors>
+					<!--<TexCoords left="0.03125" right="0.984375" top="0.03125" bottom="0.984375"/>-->
+				</HighlightTexture>
+                <Scripts>
+                    <OnClick>
+                        AlleriaCharacterFrame:Show();
+                    </OnClick>
+                    <OnEnter>
+                        AlleriaOptionsFrameSelected:SetText("Информация о персонаже и развитии");
+                    </OnEnter>
+                    <OnLeave>
+                        AlleriaOptionsFrameSelected:SetText("");
+                    </OnLeave>
+                </Scripts>
+            </Button>
+            <Button>
+                <Size x="90" y="90" />
+                <Anchors>
+                    <Anchor point="CENTER" x="-60" y="-85"/>
+                </Anchors>
+                <Layers>
+                    <Layer level="background">
+                        <Texture atlas="charactercreate-ring-customizebackground">
+                        </Texture>
+                    </Layer>
+                </Layers>
+                <NormalTexture atlas="charactercreate-icon-customize-hair" alphaMode="ADD">
+					<Anchors>
+						<Anchor point="TOPLEFT" x="0" y="0"/>
+						<Anchor point="BOTTOMRIGHT" x="0" y="0"/>
+					</Anchors>
+					<!--<TexCoords left="0.03125" right="0.984375" top="0.03125" bottom="0.984375"/>-->
+				</NormalTexture>
+                <HighlightTexture atlas="charactercreate-icon-customize-hair-selected" alphaMode="ADD">
+					<Anchors>
+						<Anchor point="TOPLEFT" x="0" y="0"/>
+						<Anchor point="BOTTOMRIGHT" x="0" y="0"/>
+					</Anchors>
+					<!--<TexCoords left="0.03125" right="0.984375" top="0.03125" bottom="0.984375"/>-->
+				</HighlightTexture>
+                <Scripts>
+                    <OnClick>
+                        SendCoreMessage("rps barbershop");
+                    </OnClick>
+                    <OnEnter>
+                        AlleriaOptionsFrameSelected:SetText("Парикмахерская");
+                    </OnEnter>
+                    <OnLeave>
+                        AlleriaOptionsFrameSelected:SetText("");
+                    </OnLeave>
+                </Scripts>
+            </Button>
+
+            <Button>
+                <Size x="90" y="90" />
+                <Anchors>
+                    <Anchor point="CENTER" x="0" y="105"/>
+                </Anchors>
+                <Layers>
+                    <Layer level="background">
+                        <Texture atlas="charactercreate-ring-customizebackground">
+                        </Texture>
+                    </Layer>
+                </Layers>
+                <NormalTexture atlas="charactercreate-icon-customize-body" alphaMode="ADD">
+					<Anchors>
+						<Anchor point="TOPLEFT" x="0" y="0"/>
+						<Anchor point="BOTTOMRIGHT" x="0" y="0"/>
+					</Anchors>
+					<!--<TexCoords left="0.03125" right="0.984375" top="0.03125" bottom="0.984375"/>-->
+				</NormalTexture>
+                <HighlightTexture atlas="charactercreate-icon-customize-body-selected" alphaMode="ADD">
+					<Anchors>
+						<Anchor point="TOPLEFT" x="0" y="0"/>
+						<Anchor point="BOTTOMRIGHT" x="0" y="0"/>
+					</Anchors>
+					<!--<TexCoords left="0.03125" right="0.984375" top="0.03125" bottom="0.984375"/>-->
+				</HighlightTexture>
+                <Scripts>
+                    <OnClick>
+                        AlleriaEmotesFrame:Show();
+                    </OnClick>
+                    <OnEnter>
+                        AlleriaOptionsFrameSelected:SetText("Показать панель эмоций");
+                    </OnEnter>
+                    <OnLeave>
+                        AlleriaOptionsFrameSelected:SetText("");
+                    </OnLeave>
+                </Scripts>
+            </Button>
+            <Button>
+                <Size x="90" y="90" />
+                <Anchors>
+                    <Anchor point="CENTER" x="100" y="40"/>
+                </Anchors>
+                <Layers>
+                    <Layer level="background">
+                        <Texture atlas="charactercreate-ring-customizebackground">
+                        </Texture>
+                    </Layer>
+                </Layers>
+                <NormalTexture atlas="charactercreate-icon-customize-accessories" alphaMode="ADD">
+					<Anchors>
+						<Anchor point="TOPLEFT" x="0" y="0"/>
+						<Anchor point="BOTTOMRIGHT" x="0" y="0"/>
+					</Anchors>
+					<!--<TexCoords left="0.03125" right="0.984375" top="0.03125" bottom="0.984375"/>-->
+				</NormalTexture>
+                <HighlightTexture atlas="charactercreate-icon-customize-accessories-selected" alphaMode="ADD">
+					<Anchors>
+						<Anchor point="TOPLEFT" x="0" y="0"/>
+						<Anchor point="BOTTOMRIGHT" x="0" y="0"/>
+					</Anchors>
+					<!--<TexCoords left="0.03125" right="0.984375" top="0.03125" bottom="0.984375"/>-->
+				</HighlightTexture>
+                <Scripts>
+                    <OnClick>
+                        AlleriaAurasFrame:Show();
+                    </OnClick>
+                    <OnEnter>
+                        AlleriaOptionsFrameSelected:SetText("Показать панель аур");
+                    </OnEnter>
+                    <OnLeave>
+                        AlleriaOptionsFrameSelected:SetText("");
+                    </OnLeave>
+                </Scripts>
+            </Button>
+
+            <Button>
+                <Size x="90" y="90" />
+                <Anchors>
+                    <Anchor point="CENTER" x="60" y="-85"/>
+                </Anchors>
+                <Layers>
+                    <Layer level="BACKGROUND">
+                        <Texture atlas="charactercreate-ring-customizebackground">
+                        </Texture>
+                    </Layer>
+                    <Layer level="BORDER">
+                        <Texture atlas="charactercreate-ring-metaldark">
+                        </Texture>
+                    </Layer>
+                    <Layer level="OVERLAY">
+                        
+                    </Layer>
+                    <Layer level="HIGHLIGHT">
+                        <Texture atlas="charactercreate-ring-metallight">
+                        </Texture>
+                    </Layer>
+                </Layers>
+                <Scripts>
+                    <OnClick>
+                        AlleriaOptionsSubFrame:Show();
+                    </OnClick>
+                    <OnEnter>
+                        AlleriaOptionsFrameSelected:SetText("Дополнительное меню");
+                    </OnEnter>
+                    <OnLeave>
+                        AlleriaOptionsFrameSelected:SetText("");
+                    </OnLeave>
+                </Scripts>
+                <Frames>
+                    <Frame>
+                        <Size x="30" y="30" />
+                        <Anchors>
+                            <Anchor point="CENTER" x="0" y="0"/>
+                        </Anchors>
+                        <Layers>
+                            <Layer>
+                                <Texture atlas="Garr_Building-AddFollowerPlus">
+                                </Texture>
+                            </Layer>
+                        </Layers>
+                    </Frame>
+                </Frames>
+            </Button>
+
+            <Frame name="AlleriaOptionsSubFrame" hidden="true">
+                <Size x="300" y="300" />
+                <Anchors>
+                    <Anchor point="CENTER" x="159" y="-115"/>
+                </Anchors>
+                <Layers>
+                    <Layer level="BACKGROUND">
+                        <Texture atlas="ChallengeMode-RuneBG">
+                        </Texture>
+                    </Layer>
+                    <Layer level="OVERLAY">
+
+                        <FontString inherits="SystemFont_InverseShadow_Small"  text="" parent="AlleriaCharacterOptionsFrame" name="$parentSelected">
+                            <FontHeight val="16"/>
+                            <Anchors>
+                                <Anchor point="CENTER" x="0" y="0"/>
+                            </Anchors>
+                        </FontString>
+                    </Layer>
+                </Layers>
+                <Frames>
+                    <Button name="EconomicsMenuButton" hidden="true">
+                        <Size x="90" y="90" />
+                        <Anchors>
+                            <Anchor point="CENTER" x="0" y="105"/>
+                        </Anchors>
+                        <Layers>
+                            <Layer level="BACKGROUND">
+                                <Texture atlas="charactercreate-ring-customizebackground">
+                                </Texture>
+                            </Layer>
+                            <Layer level="BORDER">
+                                <Texture atlas="charactercreate-ring-metaldark">
+                                </Texture>
+                            </Layer>
+                            <Layer level="OVERLAY">
+                                
+                            </Layer>
+                            <Layer level="HIGHLIGHT">
+                                <Texture atlas="charactercreate-ring-metallight">
+                                </Texture>
+                            </Layer>
+                        </Layers>
+                        <Frames>
+                            <Frame>
+                                <Size x="32" y="32" />
+                                <Anchors>
+                                    <Anchor point="CENTER" x="0" y="0"/>
+                                </Anchors>
+                                <Layers>
+                                    <Layer>
+                                        <Texture atlas="128-store-main">
+                                        </Texture>
+                                    </Layer>
+                                </Layers>
+                            </Frame>
+                        </Frames>
+                        <Scripts>
+                            <OnClick>
+                                AlleriaEconomicsFrame:Show();
+                            </OnClick>
+                            <OnEnter>
+                                AlleriaOptionsSubFrameSelected:SetText("Показать панель точек интереса");
+                            </OnEnter>
+                            <OnLeave>
+                                AlleriaOptionsSubFrameSelected:SetText("");
+                            </OnLeave>
+                        </Scripts>
+                    </Button>
+
+                    <Button hidden="false">
+                        <Size x="90" y="90" />
+                        <Anchors>
+                            <Anchor point="CENTER" x="100" y="40"/>
+                        </Anchors>
+                        <Layers>
+                            <Layer level="BACKGROUND">
+                                <Texture atlas="charactercreate-ring-customizebackground">
+                                </Texture>
+                            </Layer>
+                            <Layer level="BORDER">
+                                <Texture atlas="charactercreate-ring-metaldark">
+                                </Texture>
+                            </Layer>
+                            <Layer level="OVERLAY">
+                                
+                            </Layer>
+                            <Layer level="HIGHLIGHT">
+                                <Texture atlas="charactercreate-ring-metallight">
+                                </Texture>
+                            </Layer>
+                        </Layers>
+                        <Frames>
+                            <Frame>
+                                <Size x="32" y="32" />
+                                <Anchors>
+                                    <Anchor point="CENTER" x="0" y="0"/>
+                                </Anchors>
+                                <Layers>
+                                    <Layer>
+                                        <Texture atlas="gmchat-icon-blizz">
+                                        </Texture>
+                                    </Layer>
+                                </Layers>
+                            </Frame>
+                        </Frames>
+                        <Scripts>
+                            <OnClick>
+                                AlleriaGmForm:Show();
+                            </OnClick>
+                            <OnEnter>
+                                AlleriaOptionsSubFrameSelected:SetText("Показать ГМ Функции");
+                            </OnEnter>
+                            <OnLeave>
+                                AlleriaOptionsSubFrameSelected:SetText("");
+                            </OnLeave>
+                        </Scripts>
+                    </Button>
+					
+					<Button hidden="false">
+                        <Size x="90" y="90" />
+                        <Anchors>
+                            <Anchor point="CENTER" x="150" y="0"/>
+                        </Anchors>
+                        <Layers>
+                            <Layer level="BACKGROUND">
+                                <Texture atlas="charactercreate-ring-customizebackground">
+                                </Texture>
+                            </Layer>
+                            <Layer level="BORDER">
+                                <Texture atlas="charactercreate-ring-metaldark">
+                                </Texture>
+                            </Layer>
+                            <Layer level="OVERLAY">
+                                
+                            </Layer>
+                            <Layer level="HIGHLIGHT">
+                                <Texture atlas="charactercreate-ring-metallight">
+                                </Texture>
+                            </Layer>
+                        </Layers>
+                        <Frames>
+                            <Frame>
+                                <Size x="32" y="32" />
+                                <Anchors>
+                                    <Anchor point="CENTER" x="0" y="0"/>
+                                </Anchors>
+                                <Layers>
+                                    <Layer>
+                                        <Texture file="interface/icons/inv_hammer_20.blp">
+                                        </Texture>
+                                    </Layer>
+                                </Layers>
+                            </Frame>
+                        </Frames>
+                        <Scripts>
+                            <OnClick>
+                                Build:Show();
+                            </OnClick>
+                            <OnEnter>
+                                AlleriaOptionsSubFrameSelected:SetText("Строительство");
+                            </OnEnter>
+                            <OnLeave>
+                                AlleriaOptionsSubFrameSelected:SetText("");
+                            </OnLeave>
+                        </Scripts>
+                    </Button>
+                </Frames>
+            </Frame>
+        </Frames>
+    </Frame>
+</UI>

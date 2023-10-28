@@ -1,0 +1,11 @@
+<UI xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
+    <Button virtual="true" name="ALLERIA_GM_STATE">
+        <Size x="40" y="20" />
+        <ButtonText parentKey="Text" inherits="SystemFont_Outline_Small" toplevel="true" justifyV="CENTER" justifyH="CENTER">
+            <Size x="40"/>
+            <Anchors>
+                <Anchor point="CENTER" x="0" y="0"/>
+            </Anchors>
+        </ButtonText>
+    </Button>
+</UI>

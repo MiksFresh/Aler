@@ -1,0 +1,269 @@
+<UI xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
+    <Frame name="AlleriaGmForm" parent="UIParent" hidden="true" movable="true">
+        <Size x="200" y="400" />
+        <Anchors>
+            <Anchor point="RIGHT" x="-20" relativeTo="UIParent" />
+        </Anchors>
+        <Layers>
+            <Layer level="BACKGROUND">
+                <Texture file="Interface\DialogFrame\UI-DialogBox-Background">
+                </Texture>
+            </Layer>
+            <Layer level="OVERLAY">
+                <FontString text="GM Implementation" inherits="SystemFont_Outline" >
+                    <Anchors>
+                        <Anchor point="TOP" x="0" y="-10" />
+                    </Anchors>
+                </FontString>
+                <!-- GM State -->
+                <FontString name="ALLERIA_GM_STATE_TEXT" text="|cffFF0000GM|r" inherits="SystemFont_Outline" justifyH="LEFT" justifyV="CENTER">
+                    <Size x="70" y="20" />
+                    <Anchors>
+                        <Anchor point="TOPLEFT" x="10" y="-50" />
+                    </Anchors>
+                </FontString>
+                <!-- GM Fly State -->
+                <FontString name="ALLERIA_GM_FLY_TEXT" text="|cffFF0000GM Fly|r" inherits="SystemFont_Outline" justifyH="LEFT" justifyV="CENTER">
+                    <Size x="70" y="20" />
+                    <Anchors>
+                        <Anchor point="TOPLEFT" x="10" y="-100" />
+                    </Anchors>
+                </FontString>
+                <!-- GM Visible -->
+                <FontString name="ALLERIA_GM_VISIBLE_TEXT" text="|cffFF0000Невид.|r" inherits="SystemFont_Outline" justifyH="LEFT" justifyV="CENTER">
+                    <Size x="70" y="20" />
+                    <Anchors>
+                        <Anchor point="TOPLEFT" x="10" y="-150" />
+                    </Anchors>
+                </FontString>
+                <!-- GM Whisper -->
+                <FontString name="ALLERIA_GM_WHISPERS_TEXT" text="|cff00FF00ЛС|r" inherits="SystemFont_Outline" justifyH="LEFT" justifyV="CENTER">
+                    <Size x="70" y="20" />
+                    <Anchors>
+                        <Anchor point="TOPLEFT" x="10" y="-200" />
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+        <Frames>
+            <!-- GM State -->
+            <Button text="On" name="ALLERIA_GM_STATE_ON" inherits="UIMenuButtonStretchTemplate">
+                <Size x="50" y="20" />
+                <Anchors>
+                    <Anchor point="TOPLEFT" x="80" y="-50" />
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                    </OnClick>
+                </Scripts>
+            </Button>
+            <Button text="Off" name="ALLERIA_GM_STATE_OFF" inherits="UIMenuButtonStretchTemplate">
+                <Size x="50" y="20" />
+                <Anchors>
+                    <Anchor point="TOPLEFT" x="140" y="-50" />
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                    </OnClick>
+                </Scripts>
+            </Button>
+            <Button text="Переключить" name="ALLERIA_GM_STATE_TOGGLE" inherits="UIMenuButtonStretchTemplate">
+                <Size x="180" y="20" />
+                <Anchors>
+                    <Anchor point="TOPLEFT" x="10" y="-75" />
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                    </OnClick>
+                </Scripts>
+            </Button>
+
+            <!-- GM Fly State -->
+            <Button text="On" name="ALLERIA_GM_FLY_ON" inherits="UIMenuButtonStretchTemplate">
+                <Size x="50" y="20" />
+                <Anchors>
+                    <Anchor point="TOPLEFT" x="80" y="-100" />
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                    </OnClick>
+                </Scripts>
+            </Button>
+            <Button text="Off" name="ALLERIA_GM_FLY_OFF" inherits="UIMenuButtonStretchTemplate">
+                <Size x="50" y="20" />
+                <Anchors>
+                    <Anchor point="TOPLEFT" x="140" y="-100" />
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                    </OnClick>
+                </Scripts>
+            </Button>
+            <Button text="Переключить" name="ALLERIA_GM_FLY_TOGGLE" inherits="UIMenuButtonStretchTemplate">
+                <Size x="180" y="20" />
+                <Anchors>
+                    <Anchor point="TOPLEFT" x="10" y="-125" />
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                    </OnClick>
+                </Scripts>
+            </Button>
+
+            <!-- GM Fly State -->
+            <Button text="On" name="ALLERIA_GM_VISIBLE_ON" inherits="UIMenuButtonStretchTemplate">
+                <Size x="50" y="20" />
+                <Anchors>
+                    <Anchor point="TOPLEFT" x="80" y="-150" />
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                    </OnClick>
+                </Scripts>
+            </Button>
+            <Button text="Off" name="ALLERIA_GM_VISIBLE_OFF" inherits="UIMenuButtonStretchTemplate">
+                <Size x="50" y="20" />
+                <Anchors>
+                    <Anchor point="TOPLEFT" x="140" y="-150" />
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                    </OnClick>
+                </Scripts>
+            </Button>
+            <Button text="Переключить" name="ALLERIA_GM_VISIBLE_TOGGLE" inherits="UIMenuButtonStretchTemplate">
+                <Size x="180" y="20" />
+                <Anchors>
+                    <Anchor point="TOPLEFT" x="10" y="-175" />
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                    </OnClick>
+                </Scripts>
+            </Button>
+
+            <!-- Whispers -->
+            <Button text="On" name="ALLERIA_GM_WHISPER_ON" inherits="UIMenuButtonStretchTemplate">
+                <Size x="50" y="20" />
+                <Anchors>
+                    <Anchor point="TOPLEFT" x="80" y="-200" />
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                    </OnClick>
+                </Scripts>
+            </Button>
+            <Button text="Off" name="ALLERIA_GM_WHISPER_OFF" inherits="UIMenuButtonStretchTemplate">
+                <Size x="50" y="20" />
+                <Anchors>
+                    <Anchor point="TOPLEFT" x="140" y="-200" />
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                    </OnClick>
+                </Scripts>
+            </Button>
+            <Button text="Переключить" name="ALLERIA_GM_WHISPER_TOGGLE" inherits="UIMenuButtonStretchTemplate">
+                <Size x="180" y="20" />
+                <Anchors>
+                    <Anchor point="TOPLEFT" x="10" y="-225" />
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                    </OnClick>
+                </Scripts>
+            </Button>
+
+            <!-- Close -->
+            <Button inherits="SharedButtonTemplate" text="Закрыть">
+                <Size x="180" y="40"/>
+                <Anchors>
+                    <Anchor point="BOTTOM" x="0" y="10"/>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        AlleriaGmForm:Hide();
+                    </OnClick>
+                </Scripts>
+            </Button>
+
+
+            <!-- Frames -->
+            <Frame name="ALLERIA_GM_GOB_FRAME" hidden="true">
+                <Size x="200" y="400" />
+                <Anchors>
+                    <Anchor x="-210" relativeTo="$parent" relativePoint="TOPLEFT"/>
+                </Anchors>
+                <Layers>
+                    <Layer level="BACKGROUND">
+                        <Texture file="Interface\DialogFrame\UI-DialogBox-Background">
+                        </Texture>
+                    </Layer>
+                    <Layer level="OVERLAY">
+                        <FontString text="Работа с GameObject" inherits="SystemFont_Outline" >
+                            <Anchors>
+                                <Anchor point="TOP" x="0" y="-10" />
+                            </Anchors>
+                        </FontString>
+
+                        <FontString text="Entry (Не GUID)" justifyH="LEFT" inherits="SystemFont_Outline" >
+                            <Size x="180" y="40" />
+                            <Anchors>
+                                <Anchor point="TOP" x="10" y="-30" />
+                            </Anchors>
+                        </FontString>
+
+                        <FontString text="GUID" justifyH="LEFT" inherits="SystemFont_Outline" >
+                            <Size x="180" y="40" />
+                            <Anchors>
+                                <Anchor point="TOP" x="10" y="-80" />
+                            </Anchors>
+                        </FontString>
+                    </Layer>
+                </Layers>
+                <Frames>
+                    <EditBox name="ALLERIA_GM_GOB_ENTRY" inherits="AlleriaCommonEditBox">
+                        <Anchors>
+                            <Anchor point="TOPLEFT" x="20" y="-50"/>
+                        </Anchors>
+                    </EditBox>
+
+                    <EditBox name="ALLERIA_GM_GOB_GUID" inherits="AlleriaCommonEditBox">
+                        <Anchors>
+                            <Anchor point="TOPLEFT" x="20" y="-100"/>
+                        </Anchors>
+                    </EditBox>
+
+                    <Button text="Добавить объект" name="ALLERIA_GM_GOB_ADD" inherits="UIMenuButtonStretchTemplate">
+                        <Size x="180" y="26" />
+                        <Anchors>
+                            <Anchor point="TOPLEFT" x="10" y="-140" />
+                        </Anchors>
+                        <Scripts>
+                            <OnClick>
+                            </OnClick>
+                        </Scripts>
+                    </Button>
+                    <Button text="Удалить объект" name="ALLERIA_GM_GOB_DEL" inherits="UIMenuButtonStretchTemplate">
+                        <Size x="180" y="26" />
+                        <Anchors>
+                            <Anchor point="TOPLEFT" x="10" y="-170" />
+                        </Anchors>
+                        <Scripts>
+                            <OnClick>
+                            </OnClick>
+                        </Scripts>
+                    </Button>
+                </Frames>
+            </Frame>
+        </Frames>
+        <Scripts>
+            <OnLoad>
+                MakeMovable(self);
+            </OnLoad>
+            <OnShow>
+                Alleria.Modules.GM:InitializeXML();
+            </OnShow>
+        </Scripts>
+    </Frame>
+</UI>

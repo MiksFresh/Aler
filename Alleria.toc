@@ -1,0 +1,17 @@
+## Interface: 100105
+## Title: Alleria Systems
+## Notes: Ролевой помощник для игроков проекта NightWatch|nВерсия: 0.2 Silvermoon
+## Author: NightWatch Team
+## Version: 0.2
+## SavedVariables: AlleriaGlobal
+## SavedVariablesPerCharacter: AlleriaCharacter
+
+
+## X-WebSite: https://rp.nw-wow.ru
+
+Includes.xml
+
+Core.lua
+Common.lua
+Modules.xml
+Init.lua

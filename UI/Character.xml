@@ -1,0 +1,524 @@
+<UI xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
+    <Frame name="AlleriaCharacterFrame" movable="false" parent="UIParent" hidden="true">
+        <Anchors>
+            <Anchor point="CENTER" />
+        </Anchors>
+        <Size x="630" y="640" />
+        <Layers>
+            <Layer level="BACKGROUND">
+                <Texture atlas="auctionhouse-background-index">
+                </Texture>
+            </Layer>
+            <Layer level="OVERLAY">
+                <Texture name="CharacterTeamHorde" atlas="charactercreate-icon-horde" hidden="true">
+                    <Size x="92" y="100" />
+                    <Anchors>
+                        <Anchor point="TOPLEFT" x="10" y="0"/>
+                    </Anchors>
+                </Texture>
+                <Texture name="CharacterTeamAlliance" atlas="charactercreate-icon-alliance" hidden="true">
+                    <Size x="92" y="100" />
+                    <Anchors>
+                        <Anchor point="TOPLEFT" x="10" y="0"/>
+                    </Anchors>
+                </Texture>
+                
+                <FontString name="CharacterName" inherits="Game18Font">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" x="102" y="-40" />
+                    </Anchors>
+                </FontString>
+                <FontString name="CharacterInfo" inherits="SystemFont_Outline">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" x="102" y="-60" />
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+
+        <Frames>
+            <Frame name="AlleriaCharacterFrameMenu" parent="AlleriaCharacterFrame">
+                <Anchors>
+                    <Anchor point="TOPLEFT" x="0" y="-100" />
+                </Anchors>
+                <Size x="630" y="40" />
+                <Frames>
+                    <Button inherits="SharedButtonTemplate" text="Основное">
+                        <Size x="100" y="30" />
+                        <Anchors>
+                            <Anchor point="BOTTOMLEFT" y="10" x="10" />
+                        </Anchors>
+                        <Scripts>
+                            <OnClick>
+                                Alleria.Modules.Character:ChangeWindow("Main");
+                            </OnClick>
+                        </Scripts>
+                    </Button>
+                    <Button inherits="SharedButtonTemplate" text="Облик">
+                        <Size x="100" y="30" />
+                        <Anchors>
+                            <Anchor point="BOTTOMLEFT" y="10" x="110" />
+                        </Anchors>
+                        <Scripts>
+                            <OnClick>
+                                Alleria.Modules.Character:ChangeWindow("Display");
+                            </OnClick>
+                        </Scripts>
+                    </Button>
+                    <!--<Button inherits="SharedButtonTemplate" text="Звания">
+                        <Size x="100" y="30" />
+                        <Anchors>
+                            <Anchor point="BOTTOMLEFT" y="10" x="210" />
+                        </Anchors>
+                        <Scripts>
+                            <OnClick>
+                                Alleria.Modules.Character:ChangeWindow(nil);
+                            </OnClick>
+                        </Scripts>
+                    </Button>
+                    <Button inherits="SharedButtonTemplate" text="Предметы">
+                        <Size x="100" y="30" />
+                        <Anchors>
+                            <Anchor point="BOTTOMLEFT" y="10" x="320" />
+                        </Anchors>
+                        <Scripts>
+                            <OnClick>
+                                Alleria.Modules.Character:ChangeWindow(nil);
+                            </OnClick>
+                        </Scripts>
+                    </Button>
+                    <Button inherits="SharedButtonTemplate" text="Предметы">
+                        <Size x="100" y="30" />
+                        <Anchors>
+                            <Anchor point="BOTTOMLEFT" y="10" x="420" />
+                        </Anchors>
+                        <Scripts>
+                            <OnClick>
+                                Alleria.Modules.Character:ChangeWindow(nil);
+                            </OnClick>
+                        </Scripts>
+                    </Button>
+                    <Button inherits="SharedButtonTemplate" text="Помощь">
+                        <Size x="100" y="30" />
+                        <Anchors>
+                            <Anchor point="BOTTOMLEFT" y="10" x="520" />
+                        </Anchors>
+                        <Scripts>
+                            <OnClick>
+                                Alleria.Modules.Character:ChangeWindow(nil);
+                            </OnClick>
+                        </Scripts>
+                    </Button>-->
+                </Frames>
+            </Frame>
+            <Frame name="$parentMain" parent="AlleriaCharacterFrame">
+                <Anchors>
+                    <Anchor point="TOPLEFT" x="0" y="-140" />
+                </Anchors>
+                <Size x="630" y="490" />
+                <Frames>
+                    <!-- PlayerModel -->
+                    <PlayerModel name="CharacterModel">
+                        <Anchors>
+                            <Anchor point="TOPLEFT" x="10" y="0" />
+                        </Anchors>
+                        <Size x="300" y="490" />
+                        <Scripts>
+                            <OnLoad>
+                                self:SetUnit("player");
+                            </OnLoad>
+                            <OnShow>
+                                self:SetModelScale(1);
+                            </OnShow>
+                        </Scripts>
+                        <Layers>
+                            <Layer level="BACKGROUND">
+                                <Texture atlas="auctionhouse-background-buy-commodities-market">
+                                </Texture>
+                            </Layer>
+                        </Layers>
+                        <Frames>
+                            <Frame>
+                                <Size x="50" y="50" />
+                                <Layers>
+                                    <Layer level="BACKGROUND">
+                                        <Texture atlas="charactercreate-ring-select">
+                                        </Texture>
+                                    </Layer>
+                                    <Layer>
+                                        <FontString text="Свободных очков" inherits="SystemFont_Outline">
+                                            <Anchors>
+                                                <Anchor point="LEFT" x="56" y="0" />
+                                            </Anchors>
+                                        </FontString>
+
+                                        <FontString name="CharacterStatFree" text="98" inherits="SystemFont_Outline" justifyH="center" justifyV="center">
+                                            <Size x="52" y="52" />
+                                            <Anchors>
+                                                <Anchor point="TOPLEFT" x="0" y="0" />
+                                            </Anchors>
+                                        </FontString>
+                                    </Layer>
+                                </Layers>
+                                <Anchors>
+                                    <Anchor point="BOTTOMLEFT" x="40" y="20" />
+                                </Anchors>
+                            </Frame>
+                            <Frame>
+                            </Frame>
+                        </Frames>
+                    </PlayerModel>
+                    <!-- Character Stats -->
+                    <Frame>
+                        <Anchors>
+                            <Anchor point="TOPRIGHT" x="-10" y="0" />
+                        </Anchors>
+                        <Size x="300" y="490" />
+                        <Layers>
+                            <Layer level="BACKGROUND">
+                                <Texture atlas="auctionhouse-background-buy-commodities-market">
+                                </Texture>
+                            </Layer>
+                            <Layer>
+                                <FontString text="Характеристики" inherits="Game18Font">
+                                    <Anchors>
+                                        <Anchor point="TOP" x="0" y="-20" />
+                                    </Anchors>
+                                </FontString>
+
+                                <FontString text="Сброс - сброс уже распределенных очков" inherits="SystemFont_Outline">
+                                    <Anchors>
+                                        <Anchor point="BOTTOMLEFT" x="10" y="70" />
+                                    </Anchors>
+                                </FontString>
+                                <FontString text="Отмена - отменить распределение очков" inherits="SystemFont_Outline">
+                                    <Anchors>
+                                        <Anchor point="BOTTOMLEFT" x="10" y="50" />
+                                    </Anchors>
+                                </FontString>
+                            </Layer>
+                        </Layers>
+
+                        <Frames>
+                            <Frame name="CharacterStatHealth" inherits="CharacterStat">
+                                <Anchors>
+                                    <Anchor point="TOPLEFT" x="10" y="-50" />
+                                </Anchors>
+                            </Frame>
+                            <Frame name="CharacterStatArmor" inherits="CharacterStat">
+                                <Anchors>
+                                    <Anchor point="TOPLEFT" x="10" y="-110" />
+                                </Anchors>
+                            </Frame>
+                            <Frame name="CharacterStatSpirit" inherits="CharacterStat">
+                                <Anchors>
+                                    <Anchor point="TOPLEFT" x="10" y="-170" />
+                                </Anchors>
+                            </Frame>
+                            <Frame name="CharacterStatMastery" inherits="CharacterStat">
+                                <Anchors>
+                                    <Anchor point="TOPLEFT" x="10" y="-230" />
+                                </Anchors>
+                            </Frame>
+                            <Frame name="CharacterStatDamage" inherits="CharacterStat">
+                                <Anchors>
+                                    <Anchor point="TOPLEFT" x="10" y="-290" />
+                                </Anchors>
+                            </Frame>
+
+                            <Button inherits="SharedButtonTemplate" text="Выучить">
+                                <Size x="80" y="30" />
+                                <Anchors>
+                                    <Anchor point="BOTTOMLEFT" x="10" y="10"/>
+                                </Anchors>
+                                <Scripts>
+                                    <OnClick>
+                                        Alleria.Modules.Character.StatsLearn();
+                                    </OnClick>
+                                </Scripts>
+                            </Button>
+
+                            <Button inherits="SharedButtonTemplate" text="Отмена">
+                                <Size x="80" y="30" />
+                                <Anchors>
+                                    <Anchor point="BOTTOMLEFT" x="90" y="10"/>
+                                </Anchors>
+                                <Scripts>
+                                    <OnClick>
+                                        Alleria.Modules.Character.StatsCancel();
+                                    </OnClick>
+                                </Scripts>
+                            </Button>
+
+                            <Button inherits="SharedButtonTemplate" text="Сброс">
+                                <Size x="80" y="30" />
+                                <Anchors>
+                                    <Anchor point="BOTTOMLEFT" x="210" y="10"/>
+                                </Anchors>
+                            </Button>
+
+                            
+                        </Frames>
+                    </Frame>
+                </Frames>
+            </Frame>
+            <Frame name="$parentDisplay" parent="AlleriaCharacterFrame" hidden="true">
+                <Anchors>
+                    <Anchor point="TOPLEFT" x="0" y="-140" />
+                </Anchors>
+                <Size x="630" y="490" />
+                <Frames>
+                    <!-- PlayerModel -->
+                    <DressupModel name="DisplayModel" mixin="ModelFrameMixin">
+                        <Anchors>
+                            <Anchor point="TOPLEFT" x="10" y="0" />
+                        </Anchors>
+                        <Size x="300" y="490" />
+                        <Scripts>
+                            <OnLoad>
+                                self:SetUnit("player");
+                            </OnLoad>
+                            <OnShow>
+                                self:SetModelScale(1);
+                            </OnShow>
+                        </Scripts>
+                        <Layers>
+                            <Layer level="BACKGROUND">
+                                <Texture atlas="auctionhouse-background-buy-commodities-market">
+                                </Texture>
+                            </Layer>
+                        </Layers>
+                        <Frames>
+                        </Frames>
+                    </DressupModel>
+                    <Frame>
+                        <Anchors>
+                            <Anchor point="TOPRIGHT" x="-10" y="0" />
+                        </Anchors>
+                        <Size x="300" y="490" />
+                        <Layers>
+                            <Layer level="BACKGROUND">
+                                <Texture atlas="auctionhouse-background-buy-commodities-market">
+                                </Texture>
+                            </Layer>
+                        </Layers>
+                        <Frames>
+                            <Frame inherits="DisplayRow" name="DisplayHead">
+                                <Anchors>
+                                    <Anchor point="TOPLEFT" x="20" y="-20" />
+                                </Anchors>
+                            </Frame>
+                            <Frame inherits="DisplayRow" name="DisplayShoulders">
+                                <Anchors>
+                                    <Anchor point="TOPLEFT" x="20" y="-50" />
+                                </Anchors>
+                            </Frame>
+                            <Frame inherits="DisplayRow" name="DisplayBack">
+                                <Anchors>
+                                    <Anchor point="TOPLEFT" x="20" y="-80" />
+                                </Anchors>
+                            </Frame>
+                            <Frame inherits="DisplayRow" name="DisplayChest">
+                                <Anchors>
+                                    <Anchor point="TOPLEFT" x="20" y="-110" />
+                                </Anchors>
+                            </Frame>
+                            <Frame inherits="DisplayRow" name="DisplayShirt">
+                                <Anchors>
+                                    <Anchor point="TOPLEFT" x="20" y="-140" />
+                                </Anchors>
+                            </Frame>
+                            <Frame inherits="DisplayRow" name="DisplayTabard">
+                                <Anchors>
+                                    <Anchor point="TOPLEFT" x="20" y="-170" />
+                                </Anchors>
+                            </Frame>
+                            <Frame inherits="DisplayRow" name="DisplayWrists">
+                                <Anchors>
+                                    <Anchor point="TOPLEFT" x="20" y="-200" />
+                                </Anchors>
+                            </Frame>
+                            <Frame inherits="DisplayRow" name="DisplayHand">
+                                <Anchors>
+                                    <Anchor point="TOPLEFT" x="20" y="-230" />
+                                </Anchors>
+                            </Frame>
+                            <Frame inherits="DisplayRow" name="DisplayWaist">
+                                <Anchors>
+                                    <Anchor point="TOPLEFT" x="20" y="-260" />
+                                </Anchors>
+                            </Frame>
+                            <Frame inherits="DisplayRow" name="DisplayLegs">
+                                <Anchors>
+                                    <Anchor point="TOPLEFT" x="20" y="-290" />
+                                </Anchors>
+                            </Frame>
+                            <Frame inherits="DisplayRow" name="DisplayFeet">
+                                <Anchors>
+                                    <Anchor point="TOPLEFT" x="20" y="-320" />
+                                </Anchors>
+                            </Frame>
+                            <Frame inherits="DisplayRow" name="DisplayMain">
+                                <Anchors>
+                                    <Anchor point="TOPLEFT" x="20" y="-350" />
+                                </Anchors>
+                            </Frame>
+                            <Frame inherits="DisplayRow" name="DisplayOff">
+                                <Anchors>
+                                    <Anchor point="TOPLEFT" x="20" y="-380" />
+                                </Anchors>
+                            </Frame>
+
+                            <Button inherits="SharedButtonTemplate" text="Макрос">
+                                <Size x="130" y="30" />
+                                <Anchors>
+                                    <Anchor point="BOTTOMLEFT" x="20" y="40" />
+                                </Anchors>
+                                <Scripts>
+                                    <OnClick>
+                                        Alleria.Modules.Character:CreateDisplayMacros();
+                                    </OnClick>
+                                </Scripts>
+                            </Button>
+                             <Button inherits="SharedButtonTemplate" text="Примерить">
+                                <Size x="130" y="30" />
+                                <Anchors>
+                                    <Anchor point="BOTTOMLEFT" x="20" y="10" />
+                                </Anchors>
+                                <Scripts>
+                                    <OnClick>
+                                        Alleria.Modules.Character:TryDress();
+                                    </OnClick>
+                                </Scripts>
+                            </Button>
+                            <Button inherits="SharedButtonTemplate" text="Сброс">
+                                <Size x="130" y="30" />
+                                <Anchors>
+                                    <Anchor point="BOTTOMRIGHT" x="-20" y="40" />
+                                </Anchors>
+                                <Scripts>
+                                    <OnClick>
+                                        DisplayModel:Undress();
+                                        DisplayHeadValue:SetText("");
+                                        DisplayHeadAppearance:SetText("");
+                                        DisplayShouldersValue:SetText("");
+                                        DisplayShouldersAppearance:SetText("");
+                                        DisplayShirtValue:SetText("");
+                                        DisplayShirtAppearance:SetText("");
+                                        DisplayChestValue:SetText("");
+                                        DisplayChestAppearance:SetText("");
+                                        DisplayWaistValue:SetText("");
+                                        DisplayWaistAppearance:SetText("");
+                                        DisplayLegsValue:SetText("");
+                                        DisplayLegsAppearance:SetText("");
+                                        DisplayFeetValue:SetText("");
+                                        DisplayFeetAppearance:SetText("");
+                                        DisplayWristsValue:SetText("");
+                                        DisplayWristsAppearance:SetText("");
+                                        DisplayHandValue:SetText("");
+                                        DisplayHandAppearance:SetText("");
+                                        DisplayBackValue:SetText("");
+                                        DisplayBackAppearance:SetText("");
+                                        DisplayMainValue:SetText("");
+                                        DisplayMainAppearance:SetText("");
+                                        DisplayOffValue:SetText("");
+                                        DisplayOffAppearance:SetText("");
+                                        DisplayTabardValue:SetText("");
+                                        DisplayTabardAppearance:SetText("");
+                                    </OnClick>
+                                </Scripts>
+                            </Button>
+                             <Button inherits="SharedButtonTemplate" text="Обновить">
+                                <Size x="130" y="30" />
+                                <Anchors>
+                                    <Anchor point="BOTTOMRIGHT" x="-20" y="10" />
+                                </Anchors>
+                                <Scripts>
+                                    <OnClick>
+                                        SendCoreMessage("alleria character display");
+                                    </OnClick>
+                                </Scripts>
+                            </Button>
+                        </Frames>
+                    </Frame>
+
+                    <Frame name="DisplayModelMacros" hidden="true">
+                        <Anchors>
+                            <Anchor point="TOPLEFT" x="635" y="0" />
+                        </Anchors>
+                        <Size x="230" y="360" />
+                        <Layers>
+                            <Layer level="BACKGROUND">
+                                <Texture atlas="auctionhouse-background-buy-noncommodities-market">
+                                </Texture>
+                            </Layer>
+                        </Layers>
+                        <Frames>
+                            <EditBox name="CharacterDisplayBox" autoFocus="false" multiLine="true" letters="255">
+                                <Anchors>
+                                    <Anchor point="TOPLEFT" x="10" y="-10"/>
+                                </Anchors>
+                                <Size x="210" y="280"/>
+                                <Layers>
+                                    <Layer level="BACKGROUND">
+                                        <Texture atlas="AdventureMap-InsetMapBorder">
+                                            <Anchors>
+                                                <Anchor point="TOPLEFT" y="10" x="0"/>
+                                            </Anchors>
+                                            <Size x="210" y="300"/>
+                                        </Texture>
+                                    </Layer>
+                                </Layers>
+                                <FontString inherits="GameFontNormal"/>
+                                <Scripts>
+                                    <OnEscapePressed function="EditBox_ClearFocus"/>
+                                    <OnLoad>
+                                        self:SetTextInsets(15, 30, 15, 15);
+                                    </OnLoad>
+                                </Scripts>
+                            </EditBox>
+                            <!--<Button inherits="SharedButtonTemplate" text="Создать">
+                                <Size x="130" y="30" />
+                                <Anchors>
+                                    <Anchor point="BOTTOM" x="0" y="40" />
+                                </Anchors>
+                            </Button>-->
+                            <Button inherits="SharedButtonTemplate" text="Закрыть">
+                                <Size x="130" y="30" />
+                                <Anchors>
+                                    <Anchor point="BOTTOM" x="0" y="10" />
+                                </Anchors>
+                                <Scripts>
+                                    <OnClick>
+                                        DisplayModelMacros:Hide();
+                                    </OnClick>
+                                </Scripts>
+                            </Button>
+                        </Frames>
+                    </Frame>
+                </Frames>
+            </Frame>
+            
+            
+
+
+
+            <Button name="$parentClose" inherits="ButtonTopLeftClose">
+                <Anchors>
+                    <Anchor x="-5" y="-5" point="TOPRIGHT" relativeTo="AlleriaCharacterFrame"/>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        AlleriaCharacterFrame:Hide();
+                    </OnClick>
+                </Scripts>
+            </Button>
+        </Frames>
+
+        <Scripts>
+            <OnLoad>
+                MakeMovable(self);
+            </OnLoad>
+        </Scripts>
+    </Frame>
+</UI>

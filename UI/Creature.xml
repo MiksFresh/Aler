@@ -1,0 +1,332 @@
+<UI xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
+
+    <Frame name="AlleriaCreatureInfo" parent="UIParent" hidden="true" movable="false">
+        <Size x="300" y="396" />
+        <Anchors>
+            <Anchor relativeTo="UIParent" relativePoint="RIGHT" point="RIGHT" x="-50" y="0" />
+        </Anchors>
+
+        <Layers>
+            <Layer level="BACKGROUND">
+                <Texture atlas="auctionhouse-background-buy-commodities-market">
+                </Texture>
+            </Layer>
+            <Layer level="OVERLAY">
+                <FontString text="Информация о NPC" inherits="SystemFont_Outline">
+                   <Anchors>
+                        <Anchor point="TOP" x="0" y="-20" />
+                    </Anchors>
+                </FontString>
+
+                <FontString text="Имя" inherits="SystemFont_Outline" name="CreatureTargetName">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" x="20" y="-60" />
+                    </Anchors>
+                </FontString>
+                <FontString text="DisplayID: " inherits="SystemFont_Outline" name="CreatureTargetDisplayID">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" x="20" y="-80" />
+                    </Anchors>
+                </FontString>
+                <FontString text="NativeDisplayID" inherits="SystemFont_Outline" name="CreatureTargetNativeID">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" x="20" y="-100" />
+                    </Anchors>
+                </FontString>
+                <FontString text="Entry" inherits="SystemFont_Outline" name="CreatureEntry">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" x="20" y="-120" />
+                    </Anchors>
+                </FontString>
+                <FontString text="GUID" inherits="SystemFont_Outline" name="CreatureGuid">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" x="20" y="-140" />
+                    </Anchors>
+                </FontString>
+                <FontString text="Фракция" inherits="SystemFont_Outline">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" x="20" y="-160" />
+                    </Anchors>
+                </FontString>
+
+                <FontString text="Эмоции" inherits="SystemFont_Outline">
+                    <Anchors>
+                        <Anchor point="BOTTOMLEFT" x="64" y="32" />
+                    </Anchors>
+                </FontString>
+
+                <FontString text="Ауры" inherits="SystemFont_Outline">
+                    <Anchors>
+                        <Anchor point="BOTTOMLEFT" x="64" y="71" />
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+
+        <Frames>
+            <!-- DisplayID -->
+            <EditBox inherits="AlleriaEditBoxTemplate" name="DisplayID">
+                <Size x="100" y="40"/>
+                <Anchors>
+                    <Anchor point="TOPLEFT" x="90" y="-65" />
+                </Anchors>
+            </EditBox>
+            <Button>
+                <Size x="20" y="20"/>
+                <NormalTexture atlas="common-icon-checkmark">
+                </NormalTexture>
+                <HighlightTexture atlas="ChallengeMode-SoftYellowGlow">
+                </HighlightTexture>
+                 <Anchors>
+                    <Anchor point="TOPRIGHT" x="-80" y="-75" />
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Alleria.Modules.Creature:SetNewModel();
+                    </OnClick>
+                    <OnEnter>
+                    </OnEnter>
+                    <OnLeave>
+                    </OnLeave>
+                </Scripts>
+            </Button>
+            <Button>
+                <Size x="20" y="20"/>
+                <NormalTexture atlas="common-icon-redx">
+                </NormalTexture>
+                <HighlightTexture atlas="ChallengeMode-SoftYellowGlow">
+                </HighlightTexture>
+                 <Anchors>
+                    <Anchor point="TOPRIGHT" x="-40" y="-75" />
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Alleria.Modules.Creature:RevertNewModel();
+                    </OnClick>
+                    <OnEnter>
+                    </OnEnter>
+                    <OnLeave>
+                    </OnLeave>
+                </Scripts>
+            </Button>
+            <!-- Faction -->
+            <EditBox inherits="AlleriaEditBoxTemplate" name="FactionID">
+                <Size x="100" y="40"/>
+                <Anchors>
+                    <Anchor point="TOPLEFT" x="90" y="-145" />
+                </Anchors>
+            </EditBox>
+            <Button>
+                <Size x="20" y="20"/>
+                <NormalTexture atlas="common-icon-checkmark">
+                </NormalTexture>
+                <HighlightTexture atlas="ChallengeMode-SoftYellowGlow">
+                </HighlightTexture>
+                 <Anchors>
+                    <Anchor point="TOPRIGHT" x="-80" y="-155" />
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Alleria.Modules.Creature:SetNewFaction();
+                    </OnClick>
+                    <OnEnter>
+                    </OnEnter>
+                    <OnLeave>
+                    </OnLeave>
+                </Scripts>
+            </Button>
+            <Button>
+                <Size x="20" y="20"/>
+                <NormalTexture atlas="common-icon-redx">
+                </NormalTexture>
+                <HighlightTexture atlas="ChallengeMode-SoftYellowGlow">
+                </HighlightTexture>
+                <Anchors>
+                    <Anchor point="TOPRIGHT" x="-40" y="-155" />
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Alleria.Modules.Creature:RevertNewFaction();
+                    </OnClick>
+                    <OnEnter>
+                    </OnEnter>
+                    <OnLeave>
+                    </OnLeave>
+                </Scripts>
+            </Button>
+            <!-- NPC Auras -->
+            <Button>
+                <Size x="38" y="38"/>
+                <Anchors>
+                    <Anchor point="BOTTOMLEFT" x="20" y="58" />
+                </Anchors>
+                <NormalTexture atlas="charactercreate-customize-backbutton">
+                </NormalTexture>
+                <PushedTexture atlas="charactercreate-customize-backbutton-down">
+                </PushedTexture>
+            </Button>
+            <!-- NPC Emotes -->
+            <Button>
+                <Size x="38" y="38"/>
+                <Anchors>
+                    <Anchor point="BOTTOMLEFT" x="20" y="20" />
+                </Anchors>
+                <NormalTexture atlas="charactercreate-customize-backbutton">
+                </NormalTexture>
+                <PushedTexture atlas="charactercreate-customize-backbutton-down">
+                </PushedTexture>
+                <Scripts>
+                    <OnClick>
+                        AlleriaCreatureEmotes:Show();
+                    </OnClick>
+                </Scripts>
+            </Button>
+
+            <Button inherits="ButtonTopLeftClose">
+                <Anchors>
+                    <Anchor x="-5" y="-5" point="TOPRIGHT" relativeTo="AlleriaCreatureInfo"/>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        AlleriaCreatureInfo:Hide();
+                    </OnClick>
+                </Scripts>
+            </Button>
+        </Frames>
+    </Frame>
+
+    <Frame name="AlleriaCreatureEmotes" parent="AlleriaCreatureInfo" hidden="true" movable="false">
+        <Size x="240" y="480"/>
+        <Anchors>
+            <Anchor x="-20" y="0" point="RIGHT" relativePoint="LEFT" relativeTo="AlleriaCreatureInfo"/>
+        </Anchors>
+        <Layers>
+            <Layer level="BACKGROUND">
+                <Texture atlas="auctionhouse-background-buy-commodities-market">
+                </Texture>
+            </Layer>
+            <Layer level="OVERLAY">
+                <FontString inherits="SystemFont_Outline" text="Список эмоций">
+                    <Anchors>
+                        <Anchor point="TOP" y="-20"/>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+
+        <Frames>
+            <Button inherits="ButtonTopLeftClose">
+                <Anchors>
+                    <Anchor x="-5" y="-5" point="TOPRIGHT" relativeTo="AlleriaCreatureEmotes"/>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        AlleriaCreatureEmotes:Hide();
+                    </OnClick>
+                </Scripts>
+            </Button>
+            <!-- Scrolling -->
+            <ScrollFrame name="$parentScroll" inherits="FauxScrollFrameTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" y="-75" />
+                    <Anchor point="BOTTOMRIGHT" x="-35" y="54" />
+                </Anchors>
+                <Scripts>
+                    <OnVerticalScroll>
+                        FauxScrollFrame_OnVerticalScroll(self, offset, 32, Alleria.Modules.Creature.ScrollEmotesList); 
+                    </OnVerticalScroll>
+                    <OnShow>
+                        Alleria.Modules.Creature.ScrollEmotesList();
+                    </OnShow>
+                </Scripts>
+            </ScrollFrame>
+
+
+            <Button name="AlleriaCreatureEmotesButton1" inherits="AlleriaEmotesButton" text="Эмоция 1">
+                <Anchors>
+                    <Anchor point="TOPLEFT" x="10" y="-70" />
+                </Anchors>
+            </Button>
+
+            <Button name="AlleriaCreatureEmotesButton2" inherits="AlleriaEmotesButton" text="Эмоция 2">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="AlleriaCreatureEmotesButton1" relativePoint="BOTTOMLEFT" x="0" y="0" />
+                </Anchors>
+            </Button>
+
+            <Button name="AlleriaCreatureEmotesButton3" inherits="AlleriaEmotesButton" text="Эмоция 3">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="AlleriaCreatureEmotesButton2" relativePoint="BOTTOMLEFT" x="0" y="0" />
+                </Anchors>
+            </Button>
+
+            <Button name="AlleriaCreatureEmotesButton4" inherits="AlleriaEmotesButton" text="Эмоция 4">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="AlleriaCreatureEmotesButton3" relativePoint="BOTTOMLEFT" x="0" y="0" />
+                </Anchors>
+            </Button>
+
+            <Button name="AlleriaCreatureEmotesButton5" inherits="AlleriaEmotesButton" text="Эмоция 5">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="AlleriaCreatureEmotesButton4" relativePoint="BOTTOMLEFT" x="0" y="0" />
+                </Anchors>
+            </Button>
+
+            <Button name="AlleriaCreatureEmotesButton6" inherits="AlleriaEmotesButton" text="Эмоция 6">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="AlleriaCreatureEmotesButton5" relativePoint="BOTTOMLEFT" x="0" y="0" />
+                </Anchors>
+            </Button>
+
+            <Button name="AlleriaCreatureEmotesButton7" inherits="AlleriaEmotesButton" text="Эмоция 7">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="AlleriaCreatureEmotesButton6" relativePoint="BOTTOMLEFT" x="0" y="0" />
+                </Anchors>
+            </Button>
+            <Button name="AlleriaCreatureEmotesButton8" inherits="AlleriaEmotesButton" text="Эмоция 8">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="AlleriaCreatureEmotesButton7" relativePoint="BOTTOMLEFT" x="0" y="0" />
+                </Anchors>
+            </Button>
+            <Button name="AlleriaCreatureEmotesButton9" inherits="AlleriaEmotesButton" text="Эмоция 9">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="AlleriaCreatureEmotesButton8" relativePoint="BOTTOMLEFT" x="0" y="0" />
+                </Anchors>
+            </Button>
+        </Frames>
+    </Frame>
+
+    <Frame name="CreaturesEmotesPreview" hidden="true" parent="AlleriaCreatureEmotes">
+        <Size x="240" y="480"/>
+        <Layers>
+            <Layer level="BACKGROUND">
+                <Texture atlas="auctionhouse-background-buy-commodities-market">
+                </Texture>
+            </Layer>
+        </Layers>
+        <Anchors>
+            <Anchor relativeTo="AlleriaCreatureEmotes" relativePoint="TOPLEFT" point="TOPLEFT" x="-250" y="0" />
+        </Anchors>
+        <Frames>
+            <PlayerModel name="CreatureEmotesPreviewModel">
+                <Size x="240" y="480"/>
+                <Anchors>
+                    <Anchor point="CENTER" x="0" y="0" />
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        self.AnimationID = 0;
+                    </OnLoad>
+                    <OnShow>
+                    </OnShow>
+                    <OnAnimFinished>
+                        if(self.AnimationID ~= 0) then
+                            self:SetAnimation(self.AnimationID);
+                        end;
+                    </OnAnimFinished>
+                </Scripts>
+            </PlayerModel>
+        </Frames>
+    </Frame>
+
+</UI>

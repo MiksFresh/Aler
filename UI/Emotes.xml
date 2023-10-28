@@ -1,0 +1,184 @@
+<UI xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
+    <Frame name="AlleriaEmotesFrame" hidden="true" movable="true" parent="UIParent">
+        <Size x="240" y="480"/>
+        <Anchors>
+            <Anchor point="RIGHT" x="-40" y="0"/>
+        </Anchors>
+        <Layers>
+            <Layer level="BACKGROUND">
+                <Texture atlas="auctionhouse-background-buy-commodities-market">
+                </Texture>
+            </Layer>
+            <Layer level="OVERLAY">
+                <FontString inherits="SystemFont_Outline" text="Список эмоций">
+                    <Anchors>
+                        <Anchor point="TOP" y="-20"/>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+        <Scripts>
+            <OnLoad>
+                MakeMovable(self);
+            </OnLoad>
+        </Scripts>
+
+        <Frames>
+            <!-- Search & Favorite -->
+            <EditBox inherits="SearchBoxTemplate" autoFocus="false" name="$parentSearch">
+                <Size x="180" y="28" />
+                <Anchors>
+                    <Anchor point="TOPLEFT" x="20" y="-40" />
+                </Anchors>
+                <Scripts>
+                    <OnTextChanged>
+                        Alleria.Modules.Emotes.Search();
+                    </OnTextChanged>
+                </Scripts>
+            </EditBox>
+            <!-- Favorite -->
+            <CheckButton inherits="UICheckButtonTemplate" name="$parentOnlyFavorite">
+                <Anchors>
+                    <Anchor point="TOPRIGHT" x="-7" y="-39" />
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        self:SetScript(
+                            "OnClick", function(self, event)
+                                local isFavorite = self:GetChecked();
+                                if(isFavorite == true) then
+                                    AlleriaCharacter.OnlyFavorite = true;
+                                else
+                                    AlleriaCharacter.OnlyFavorite = false;
+                                end;
+                                Alleria.Modules.Emotes.ScrollEmotesList();
+                            end
+                        );
+                    </OnLoad>
+                    <OnEnter>
+                        GameTooltip:SetOwner(self, "ANCHOR_CURSOR");
+                        GameTooltip:AddLine("|cFF00FFBBИзбранное|r");
+                        GameTooltip:AddLine("|cFFFFFFFFПоказать только избранные эмоции|r");
+                        GameTooltip:Show();
+                    </OnEnter>
+                    <OnLeave>
+                        GameTooltip:Hide();
+                    </OnLeave>
+                </Scripts>
+            </CheckButton>
+
+            <!-- Scrolling -->
+            <ScrollFrame name="$parentScroll" inherits="FauxScrollFrameTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" y="-75" />
+                    <Anchor point="BOTTOMRIGHT" x="-35" y="54" />
+                </Anchors>
+                <Scripts>
+                    <OnVerticalScroll>
+                        FauxScrollFrame_OnVerticalScroll(self, offset, 32, Alleria.Modules.Emotes.ScrollEmotesList); 
+                    </OnVerticalScroll>
+                    <OnShow>
+                        Alleria.Modules.Emotes.ScrollEmotesList();
+                    </OnShow>
+                </Scripts>
+            </ScrollFrame>
+            <!-- Emotes Buttons -->
+            <Button name="AlleriaEmotesButton1" inherits="AlleriaEmotesButton" text="Эмоция 1">
+                <Anchors>
+                    <Anchor point="TOPLEFT" x="10" y="-70" />
+                </Anchors>
+            </Button>
+
+            <Button name="AlleriaEmotesButton2" inherits="AlleriaEmotesButton" text="Эмоция 2">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="AlleriaEmotesButton1" relativePoint="BOTTOMLEFT" x="0" y="0" />
+                </Anchors>
+            </Button>
+
+            <Button name="AlleriaEmotesButton3" inherits="AlleriaEmotesButton" text="Эмоция 3">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="AlleriaEmotesButton2" relativePoint="BOTTOMLEFT" x="0" y="0" />
+                </Anchors>
+            </Button>
+
+            <Button name="AlleriaEmotesButton4" inherits="AlleriaEmotesButton" text="Эмоция 4">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="AlleriaEmotesButton3" relativePoint="BOTTOMLEFT" x="0" y="0" />
+                </Anchors>
+            </Button>
+
+            <Button name="AlleriaEmotesButton5" inherits="AlleriaEmotesButton" text="Эмоция 5">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="AlleriaEmotesButton4" relativePoint="BOTTOMLEFT" x="0" y="0" />
+                </Anchors>
+            </Button>
+
+            <Button name="AlleriaEmotesButton6" inherits="AlleriaEmotesButton" text="Эмоция 6">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="AlleriaEmotesButton5" relativePoint="BOTTOMLEFT" x="0" y="0" />
+                </Anchors>
+            </Button>
+
+            <Button name="AlleriaEmotesButton7" inherits="AlleriaEmotesButton" text="Эмоция 7">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="AlleriaEmotesButton6" relativePoint="BOTTOMLEFT" x="0" y="0" />
+                </Anchors>
+            </Button>
+            <Button name="AlleriaEmotesButton8" inherits="AlleriaEmotesButton" text="Эмоция 8">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="AlleriaEmotesButton7" relativePoint="BOTTOMLEFT" x="0" y="0" />
+                </Anchors>
+            </Button>
+            <Button name="AlleriaEmotesButton9" inherits="AlleriaEmotesButton" text="Эмоция 9">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="AlleriaEmotesButton8" relativePoint="BOTTOMLEFT" x="0" y="0" />
+                </Anchors>
+            </Button>
+            <!-- Close -->
+            <Button inherits="SharedButtonTemplate" text="Закрыть">
+                <Size x="220" y="40"/>
+                <Anchors>
+                    <Anchor point="BOTTOM" x="0" y="10"/>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        AlleriaEmotesFrame:Hide();
+                    </OnClick>
+                </Scripts>
+            </Button>
+        </Frames>
+    </Frame>
+    <Frame name="AlleriaEmotesFramePreview" hidden="true" parent="AlleriaEmotesFrame">
+        <Size x="240" y="480"/>
+        <Layers>
+            <Layer level="BACKGROUND">
+                <Texture atlas="auctionhouse-background-buy-commodities-market">
+                </Texture>
+            </Layer>
+        </Layers>
+        <Anchors>
+            <Anchor relativeTo="AlleriaEmotesFrame" relativePoint="TOPLEFT" point="TOPLEFT" x="-250" y="0" />
+        </Anchors>
+        <Frames>
+            <PlayerModel name="EmotePreviewModel">
+                <Size x="240" y="480"/>
+                <Anchors>
+                    <Anchor point="CENTER" x="0" y="0" />
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        self.AnimationID = 0;
+                    </OnLoad>
+                    <OnShow>
+                        self:SetUnit("player");
+                    </OnShow>
+                    <OnAnimFinished>
+                        if(self.AnimationID ~= 0) then
+                            self:SetAnimation(self.AnimationID);
+                        end;
+                    </OnAnimFinished>
+                </Scripts>
+            </PlayerModel>
+        </Frames>
+    </Frame>
+</UI>

@@ -1,0 +1,34 @@
+<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
+	
+    <Include file="UI\UITemplates.xml" />
+    <Include file="UI\Editbox.xml" />
+    <Include file="UI\Buttons.xml" />
+
+    <Include file="UI\Character.xml" />
+    <Include file="UI\Creature.xml" />
+    <Include file="UI\Emotes.xml" />
+    <Include file="UI\Economics.xml" />
+    <Include file="UI\GM.xml" />
+    <Include file="UI\Auras.xml" />
+
+    <Include file="UI\UI.xml" />
+	
+	<Include file="UI\Build.xml" />
+
+    <Script file="Datasheets\Emotes.lua" />
+    <Script file="Datasheets\POI.lua" />
+    <Script file="Datasheets\Auras.lua" />
+
+	<Script file="Modules\SMSG.lua" />
+    <Script file="Modules\Chat.lua" />
+
+    <Script file="Modules\UI.lua" />
+    <Script file="Modules\Creature.lua" />
+    <Script file="Modules\Character.lua" />
+    <Script file="Modules\Emotes.lua" />
+    <Script file="Modules\Economics.lua" />
+    <Script file="Modules\GM.lua" />
+    <Script file="Modules\Auras.lua" />
+	<Script file="Modules\Build.lua" />
+    
+</Ui>

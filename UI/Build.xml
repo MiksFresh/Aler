@@ -1,0 +1,528 @@
+<UI xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
+	<Frame name="Build"  parent="UIParent" hidden="true" movable="true">
+		<Size x="280" y="430" />
+		<Anchors>
+			<Anchor point="TOPLEFT" x="500" y="0" />
+		</Anchors>
+		<Layer level="BACKGROUND">
+                <Texture file="Interface\DialogFrame\UI-DialogBox-Background">
+                </Texture>
+            </Layer>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="GobMoveCategoryLabel" inherits="GameFontNormal" text="ID">
+					<Size x="35" y="22" />
+					<Anchors>
+						<Anchor point="TOPLEFT" x="31" y="-25" />
+					</Anchors>
+				</FontString>
+				<FontString name="GobMoveCategoryLabel" inherits="GameFontNormal" text="GUID">
+					<Size x="40" y="22" />
+					<Anchors>
+						<Anchor point="TOPLEFT" x="22" y="-51" />
+					</Anchors>
+				</FontString>
+				<FontString name="GobMoveCategoryLabel" inherits="GameFontNormal" text="X">
+					<Size x="35" y="22" />
+					<Anchors>
+						<Anchor point="TOPLEFT" x="18" y="-104" />
+					</Anchors>
+				</FontString>
+				<FontString name="GobMoveCategoryLabel" inherits="GameFontNormal" text="Y">
+					<Size x="35" y="22" />
+					<Anchors>
+						<Anchor point="TOPLEFT" x="18" y="-131" />
+					</Anchors>
+				</FontString>
+				<FontString name="GobMoveCategoryLabel" inherits="GameFontNormal" text="Z">
+					<Size x="35" y="22" />
+					<Anchors>
+						<Anchor point="TOPLEFT" x="18" y="-158" />
+					</Anchors>
+				</FontString>
+				<FontString name="GobMoveCategoryLabel" inherits="GameFontNormal" text="Координаты">
+					<Size x="86" y="25" />
+					<Anchors>
+						<Anchor point="TOPLEFT" x="47" y="-80" />
+					</Anchors>
+				</FontString>
+				<FontString name="GobActionCategoryLabel" inherits="GameFontNormal" text="Действия">
+					<Size x="66" y="22" />
+					<Anchors>
+						<Anchor point="TOPLEFT" x="102" y="-255" />
+					</Anchors>
+				</FontString>
+				<FontString name="GobSizeCategoryLabel" inherits="GameFontNormal" text="Размер">
+					<Size x="66" y="22" />
+					<Anchors>
+						<Anchor point="TOPLEFT" x="26" y="-180" />
+					</Anchors>
+				</FontString>
+				<FontString name="GobSizeCategoryLabel" inherits="GameFontNormal" text="Оси наклона">
+					<Size x="82" y="22" />
+					<Anchors>
+						<Anchor point="TOPLEFT" x="150" y="-180" />
+					</Anchors>
+				</FontString>
+				<FontString name="GobSizeCategoryLabel" inherits="GameFontNormal" text="Шаг">
+					<Size x="35" y="22" />
+					<Anchors>
+						<Anchor point="TOPLEFT" x="233" y="-200" />
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<EditBox name="GobIdValueText" inherits="InputBoxTemplate" autoFocus="false">
+				<Size x="100" y="22" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="65" y="-25" />
+				</Anchors>
+			</EditBox>
+			<EditBox name="GobGuidValueText" inherits="InputBoxTemplate" autoFocus="false">
+				<Size x="100" y="22" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="65" y="-51" />
+				</Anchors>
+			</EditBox>	
+			<Button name="GobTarButton" inherits="UIPanelButtonTemplate" text="Таргет">
+				<Size x="70" y="30" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="185" y="-20" />
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						GobTarButton_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="GobTarButton" inherits="UIPanelButtonTemplate" text="Add">
+				<Size x="40" y="25" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="200" y="-52" />
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						GobAddButton_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+<!--Перемещение-->
+			<EditBox name="StepMoveValueText" inherits="InputBoxTemplate" autoFocus="false">
+				<Size x="30" y="22" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="202" y="-129" />
+				</Anchors>
+			</EditBox>
+			<Button name="GobRotateRight" text="">
+				<Size x="30" y="30" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="172" y="-100" />
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						GobRotateRight_OnClick()
+					</OnClick>
+				</Scripts>
+				<NormalTexture file="Interface\BUTTONS\UI-RotationLeft-Button-Up" />
+				<PushedTexture file="Interface\BUTTONS\UI-RotationLeft-Button-Down" />
+			</Button>
+			<Button name="GobRotateLeft" text="">
+				<Size x="30" y="30" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="225" y="-100" />
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						GobRotateLeft_OnClick()
+					</OnClick>
+				</Scripts>
+				<NormalTexture file="Interface\BUTTONS\UI-RotationRight-Button-Up" />
+				<PushedTexture file="Interface\BUTTONS\UI-RotationRight-Button-Down" />
+			</Button>
+			<Button name="GobMoveForward" inherits="UIPanelButtonTemplate" text="X+">
+				<Size x="27" y="27" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="200" y="-100" />
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						GobMoveForward_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="GobMoveBackward" inherits="UIPanelButtonTemplate" text="X-">
+				<Size x="27" y="27" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="200" y="-153" />
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						GobMoveBackward_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="GobMoveRight" inherits="UIPanelButtonTemplate" text="Y-">
+				<Size x="27" y="27" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="234" y="-127" />
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						GobMoveRight_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="GobMoveLeft" inherits="UIPanelButtonTemplate" text="Y+">
+				<Size x="27" y="27" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="168" y="-127" />
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						GobMoveLeft_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="GobUp" inherits="UIPanelButtonTemplate" text="Z+">
+				<Size x="25" y="22" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="150" y="-100" />
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						GobUp_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="GobDown" inherits="UIPanelButtonTemplate" text="Z-">
+				<Size x="25" y="22" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="150" y="-158" />
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						GobDown_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+<!--Координаты-->			
+			<EditBox name="GobXCoordinate" inherits="InputBoxTemplate" letters="10" autoFocus="false">
+				<Size x="80" y="27" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="47" y="-100" />
+				</Anchors>
+			</EditBox>
+			<EditBox name="GobYCoordinate" inherits="InputBoxTemplate" letters="10" autoFocus="false">
+				<Size x="80" y="27" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="47" y="-127" />
+				</Anchors>
+			</EditBox>
+			<EditBox name="GobZCoordinate" inherits="InputBoxTemplate" letters="10" autoFocus="false">
+				<Size x="80" y="27" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="47" y="-154" />
+				</Anchors>
+				<Scripts>
+					<OnEnterPressed>
+						ManualInput()
+					</OnEnterPressed>
+				</Scripts>
+			</EditBox>
+<!--Размер -->			
+			<Button name="GobPlusSize" text="">
+				<Size x="18" y="18" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="85" y="-197" />
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						GobPlusSize_OnClick()
+					</OnClick>
+				</Scripts>
+				<NormalTexture file="Interface\BUTTONS\UI-PlusButton-Up" />
+				<PushedTexture file="Interface\BUTTONS\UI-PlusButton-Down" />
+			</Button>
+			<Button name="GobMinusSize" text="">
+				<Size x="18" y="18" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="25" y="-197" />
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						GobMinusSize_OnClick()
+					</OnClick>
+				</Scripts>
+				<NormalTexture file="Interface\BUTTONS\UI-MinusButton-Up" />
+				<PushedTexture file="Interface\BUTTONS\UI-MinusButton-Down" />
+			</Button>
+			<EditBox name="StepSizeValueText" inherits="InputBoxTemplate" autoFocus="false">
+				<Size x="35" y="22" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="49" y="-197" />
+				</Anchors>
+			</EditBox>		
+<!--Наклон-->
+				<!--RotX-->
+			<EditBox name="RotaDegX" inherits="InputBoxTemplate" autoFocus="false">
+				<Size x="35" y="22" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="170" y="-197" />
+				</Anchors>
+				<Scripts>
+					<OnEnterPressed>
+						RotaInput()
+					</OnEnterPressed>
+					<OnEnter>
+						GameTooltip:SetOwner(self, "ANCHOR_CURSOR")
+						GameTooltip:AddLine("|cFFFFFFFFX|r")
+						GameTooltip:Show()
+					</OnEnter>
+					<OnLeave>
+					    GameTooltip:Hide()
+					</OnLeave>
+				</Scripts>
+			</EditBox>
+			<Button name="BRotX+" text="">
+				<Size x="18" y="18" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="206" y="-197" />
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						RotaXP()
+					</OnClick>
+				</Scripts>
+				<NormalTexture file="Interface\BUTTONS\UI-PlusButton-Up" />
+				<PushedTexture file="Interface\BUTTONS\UI-PlusButton-Down" />
+			</Button>
+			<Button name="BRotX-" text="">
+				<Size x="18" y="18" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="146" y="-197" />
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						RotaXM()
+					</OnClick>
+				</Scripts>
+				<NormalTexture file="Interface\BUTTONS\UI-MinusButton-Up" />
+				<PushedTexture file="Interface\BUTTONS\UI-MinusButton-Down" />
+			</Button>
+			<!--RotY-->
+			<EditBox name="RotaDegY" inherits="InputBoxTemplate" autoFocus="false">
+				<Size x="35" y="22" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="170" y="-217" />
+				</Anchors>
+				<Scripts>
+					<OnEnterPressed>
+						RotaInput()
+					</OnEnterPressed>
+					<OnEnter>
+						GameTooltip:SetOwner(self, "ANCHOR_CURSOR")
+						GameTooltip:AddLine("|cFFFFFFFFY|r")
+						GameTooltip:Show()
+					</OnEnter>
+					<OnLeave>
+					    GameTooltip:Hide()
+					</OnLeave>
+				</Scripts>
+			</EditBox>
+			<Button name="BRotY+" text="">
+				<Size x="18" y="18" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="206" y="-217" />
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						RotaYP()
+					</OnClick>
+				</Scripts>
+				<NormalTexture file="Interface\BUTTONS\UI-PlusButton-Up" />
+				<PushedTexture file="Interface\BUTTONS\UI-PlusButton-Down" />
+			</Button>
+			<Button name="BRotY-" text="">
+				<Size x="18" y="18" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="146" y="-217" />
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						RotaYM()
+					</OnClick>
+				</Scripts>
+				<NormalTexture file="Interface\BUTTONS\UI-MinusButton-Up" />
+				<PushedTexture file="Interface\BUTTONS\UI-MinusButton-Down" />
+			</Button>
+			<!--RotZ-->
+			
+			<EditBox name="RotaDegZ" inherits="InputBoxTemplate" autoFocus="false">
+				<Size x="35" y="22" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="170" y="-235" />
+				</Anchors>
+				<Scripts>
+					<OnEnterPressed>
+						RotaInput()
+					</OnEnterPressed>
+					<OnEnter>
+						GameTooltip:SetOwner(self, "ANCHOR_CURSOR")
+						GameTooltip:AddLine("|cFFFFFFFFZ|r")
+						GameTooltip:Show()
+					</OnEnter>
+					<OnLeave>
+					    GameTooltip:Hide()
+					</OnLeave>
+				</Scripts>
+			</EditBox>
+			<Button name="BRotZ+" text="">
+				<Size x="18" y="18" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="206" y="-235" />
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						RotaZP()
+					</OnClick>
+				</Scripts>
+				<NormalTexture file="Interface\BUTTONS\UI-PlusButton-Up" />
+				<PushedTexture file="Interface\BUTTONS\UI-PlusButton-Down" />
+			</Button>
+			<Button name="BRotZ-" text="">
+				<Size x="18" y="18" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="146" y="-235" />
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						RotaZM()
+					</OnClick>
+				</Scripts>
+				<NormalTexture file="Interface\BUTTONS\UI-MinusButton-Up" />
+				<PushedTexture file="Interface\BUTTONS\UI-MinusButton-Down" />
+			</Button>
+<!--Step
+			<EditBox name="RotaDegStep" inherits="InputBoxTemplate" autoFocus="false">
+				<Size x="20" y="26" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="245" y="-215" />
+				</Anchors>
+			</EditBox>-->
+<!--Действия-->		
+			<Button name="GobCloneButton" inherits="UIPanelButtonTemplate" text="Клон">
+				<Size x="66" y="22" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="25" y="-280" />
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						GobCloneButton_OnClick()
+					</OnClick>
+					<OnEnter>
+						GameTooltip:SetOwner(self, "ANCHOR_CURSOR")
+						GameTooltip:AddLine("|cFFFFFFFFКлонирование объекта|r")
+						GameTooltip:Show()
+					</OnEnter>
+					<OnLeave>
+					    GameTooltip:Hide()
+					</OnLeave>
+				</Scripts>
+			</Button>
+			
+			<Button name="TeleToGobjet" inherits="UIPanelButtonTemplate" text="Телепорт">
+				<Size x="66" y="22" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="102" y="-280" />
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						TeleToGobjet_OnClick()
+					</OnClick>
+					<OnEnter>
+						GameTooltip:SetOwner(self, "ANCHOR_CURSOR")
+						GameTooltip:AddLine("|cFFFFFFFFПереместиться к местоположению объекта|r")
+						GameTooltip:Show()
+					</OnEnter>
+					<OnLeave>
+					    GameTooltip:Hide()
+					</OnLeave>
+				</Scripts>
+			</Button>
+			<Button name="GobSumon" inherits="UIPanelButtonTemplate" text="Суммон">
+				<Size x="66" y="22" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="179" y="-280" />
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						GobSumon_OnClick()
+					</OnClick>
+					<OnEnter>
+						GameTooltip:SetOwner(self, "ANCHOR_CURSOR")
+						GameTooltip:AddLine("|cFFFFFFFFПереместить объект к себе|r")
+						GameTooltip:Show()
+					</OnEnter>
+					<OnLeave>
+					    GameTooltip:Hide()
+					</OnLeave>
+				</Scripts>
+			</Button>
+			<Button name="GobClous" inherits="UIPanelButtonTemplate" text="Закрыть">
+				<Size x="66" y="22" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="179" y="-309" />
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						GameTooltip:Hide()
+					</OnClick>
+					<OnEnter>
+						GameTooltip:SetOwner(self, "ANCHOR_CURSOR")
+						GameTooltip:AddLine("|cFFFFFFFFЗакрыть стройку|r")
+						GameTooltip:Show()
+					</OnEnter>
+				</Scripts>
+			</Button>
+			<Button name="GobCopyButton" inherits="UIPanelButtonTemplate" text="Копия">
+				<Size x="66" y="22" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="25" y="-309" />
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						GobCopyButton_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="GobResetButton" inherits="UIPanelButtonTemplate" text="Вернуть">
+				<Size x="66" y="22" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="102" y="-309" />
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						GobResetButton_OnClick()
+					</OnClick>
+					<OnEnter>
+						GameTooltip:SetOwner(self, "ANCHOR_CURSOR")
+						GameTooltip:AddLine("|cFFFFFFFFВосстановить последний удаленный объект|r")
+						GameTooltip:Show()
+					</OnEnter>
+					<OnLeave>
+					    GameTooltip:Hide()
+					</OnLeave>
+				</Scripts>
+			</Button>
+		</Frames>
+		<Scripts>
+            <OnLoad>
+                MakeMovable(self);
+            </OnLoad>
+            <OnShow>
+                Alleria.Modules.GM:InitializeXML();
+            </OnShow>
+        </Scripts>
+	</Frame>
+</UI>
